@@ -22,13 +22,12 @@ const handler = (payload, res) => {
 
   var text = payload.text
   var blocks = text.split(" ")
-
-  console.log("restaurant name is " + blocks[1])
+  var restaurant_name = blocks[1]
+  console.log("restaurant name is " + restaurant_name)
   
   if(blocks[0]=="add"){    
       if(blocks.length == 2 && blocks[0]=="add"){
           console.log("ready to create restaurant")
-          var restaurant_name = blocks[1]
           create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
               console.log("here?")
               if(err){
@@ -38,6 +37,21 @@ const handler = (payload, res) => {
               else{
 	          added_restaurant.save(function (err) {if (err) console.log ('Error on save!')});
 	          console.log("restaurant " + restaurant_name + " saved.")
+		  let attachments = [
+		  {
+		    title: 'Lunch Today!',
+		    color: '#2FA44F',
+		    text: "restaurant " + restaurant_name + " added",
+		    mrkdwn_in: ['text']
+		  }]
+		  let msg = _.defaults({
+		    channel: payload.channel_name,
+		    attachments: attachments
+		  }, msgDefaults)
+
+		  res.set('content-type', 'application/json')
+		  res.status(200).json(msg)
+
               }
           })           
       }
@@ -51,21 +65,6 @@ const handler = (payload, res) => {
   }
 
 
-  let attachments = [
-  {
-    title: 'Lunch Today!',
-    color: '#2FA44F',
-    text: "restaurant " + restaurant_name + " added",
-    mrkdwn_in: ['text']
-  }]
-
-  let msg = _.defaults({
-    channel: payload.channel_name,
-    attachments: attachments
-  }, msgDefaults)
-
-  res.set('content-type', 'application/json')
-  res.status(200).json(msg)
 
   return
 }
