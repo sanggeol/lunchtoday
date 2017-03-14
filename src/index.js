@@ -40,12 +40,18 @@ app.post('/commands/starbot', (req, res) => {
   }
   
 
-  console.log("Hello world")
 
   console.log(payload)
 
-
-  let task = listCommand
+  let task
+  switch(payload.text){
+    case 'list' : 
+        task = listCommand
+        break
+    case 'help' :
+        task = helpCommand
+        break
+  }
 
   let cmd = _.reduce(commands, (a, cmd) => {
     return payload.text.match(cmd.pattern) ? cmd : a
