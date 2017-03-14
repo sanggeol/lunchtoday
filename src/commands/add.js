@@ -23,27 +23,37 @@ const handler = (payload, res) => {
   var text = payload.text
   var blocks = text.split(" ")
 
-  console.log("restaurant name is" + blocks[1])
-      
-  if(blocks.length > 2 && blocks[0]=="add"){
-      var restaurant_name = blocks[1]
-      create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
-          if(err){
-              console.log(err)
-              res.send(500)
-          }
-          else{
-	      added_restaurant.save(function (err) {if (err) console.log ('Error on save!')});
-	      console.log("restaurant " + restaurant_name + " saved.")
-          }
-      })           
+  console.log("restaurant name is " + blocks[1])
+  
+  if(blocks[0]=="add"){    
+      if(blocks.length == 2 && blocks[0]=="add"){
+          var restaurant_name = blocks[1]
+          create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
+              if(err){
+                  console.log(err)
+                  res.send(500)
+              }
+              else{
+	          added_restaurant.save(function (err) {if (err) console.log ('Error on save!')});
+	          console.log("restaurant " + restaurant_name + " saved.")
+              }
+          })           
+      }
+      elseif(blocks.length < 2){
+          console.log("restaurant name not supplied")
+          res.send("restaurant name is needed! See help")
+      }
   }
+  else{
+      console.log("not an add command")
+  }
+
 
   let attachments = [
   {
     title: 'Lunch Today!',
     color: '#2FA44F',
-    text: 'restaurant' + restaurant_name + ' added',
+    text: "restaurant " + restaurant_name + " added",
     mrkdwn_in: ['text']
   }]
 
