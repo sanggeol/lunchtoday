@@ -23,7 +23,14 @@ const handler = (payload, res) => {
       
   if(blocks.length > 2 && blocks[0]=="add"){
       var restaurant_name = blocks[1]
-      create_restaurant(user_name, user_id, team_name, team_id, restaurant_name)           
+      create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,restaurant){
+          if(err){
+              console.log(err)
+              res.send(500)
+          }
+          else{
+          }
+      })           
   }
 
   let attachments = [
