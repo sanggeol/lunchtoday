@@ -30,6 +30,7 @@ const handler = (payload, res) => {
           console.log("ready to create restaurant")
           var restaurant_name = blocks[1]
           create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
+              console.log("here?")
               if(err){
                   console.log(err)
                   res.send(500)
