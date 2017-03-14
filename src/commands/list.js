@@ -26,8 +26,7 @@ const handler = (payload, res) => {
 //     })
     Restaurants.find({}).exec(function(err, result) {
       if (!err) {
-          res.write(html1 + JSON.stringify(result, undefined, 2) +  html2 + result.length + html3);
-          res.end(html4 + JSON.stringify(result, undefined, 2) + html5 + result.length + html6);
+          res.send(JSON.stringify(result, undefined, 2));
       } else {
           console.log(err)
           res.send(500)
