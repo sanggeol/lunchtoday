@@ -22,47 +22,29 @@ const handler = (payload, res) => {
 
   var text = payload.text
   var blocks = text.split(" ")
+
   var restaurant_name = blocks[1]
+  
   console.log("restaurant name is " + restaurant_name)
   
   if(blocks[0]=="remove"){    
-      if(blocks.length == 2 && blocks[0]=="add"){
-          console.log("ready to remove restaurant")
-          find_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,find_restaurant){
-              
-              if(err){
-                  console.log(err)
-                  res.send(500)
-              }
-              else{
-                  find_restaurant.remove({ _id: req.body.id }, function(err) {
-                    if (err) {
-                     console.log("Error on remove")
-                     }
-             else {
-              
-               console.log("restaurant " + restaurant_name + " removed.")
+      if(blocks.length == 2 && blocks[0]=="remove"){
 
-              }
-          });
-
-		  let attachments = [
-		  {
-		    title: 'Lunch Today!',
-		    color: '#2FA44F',
-		    text: "restaurant " + restaurant_name + "removed!",
-		    mrkdwn_in: ['text']
-		  }]
-		  let msg = _.defaults({
+  		  let attachments = [
+  		  {
+  	 	    title: 'Lunch Today!',
+	   	    color: '#2FA44F',
+	 	      text: "restaurant " + restaurant_name + "removed!",
+		     mrkdwn_in: ['text']
+		    }]
+		    let msg = _.defaults({
 		    channel: payload.channel_name,
 		    attachments: attachments
-		  }, msgDefaults)
+		    }, msgDefaults)
 
-		  res.set('content-type', 'application/json')
-		  res.status(200).json(msg)
-
-              }
-          })           
+		    res.set('content-type', 'application/json')
+		    res.status(200).json(msg)
+                     
       }
       else if(blocks.length < 2){
           console.log("restaurant name not supplied")
@@ -70,29 +52,12 @@ const handler = (payload, res) => {
       }
   }
   else{
-      console.log("not an add command")
+      console.log("not an remove command")
   }
-
-
 
   return
 }
 
-var find_restaurant = function(user_name, user_id, team_name, team_id, restaurant_name, cb){
-  Restaurants.find({user_name: user_name,
-                  user_id: user_id,
-               	  team_name: team_name,
-          	  team_id: team_id,
-             	  restaurant_name: restaurant_name}, function(err,added_restaurant){
-	    if(err){
-                cb(err, null)
-            }
-            else{
-                console.log(added_restaurant)
-                cb(null, added_restaurant)
-            }
-	})
-}
 
 module.exports = { pattern: /remove/ig, handler: handler }
 
