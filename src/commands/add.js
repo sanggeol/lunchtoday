@@ -70,11 +70,19 @@ const handler = (payload, res) => {
 }
 
 var create_restaurant = function(user_name, user_id, team_name, team_id, restaurant_name, cb){
-	return Restaurants.create({user_name: user_name,
+	Restaurants.create({user_name: user_name,
                   user_id: user_id,
                	  team_name: team_name,
           	  team_id: team_id,
-             	  restaurant_name: restaurant_name})
+             	  restaurant_name: restaurant_name}, function(err,added_restaurant){
+	    if(err){
+                cb(err, null)
+            }
+            else{
+                console.log(added_restaurant)
+                cb(null, added_restaurant)
+            }
+	})
 }
 
 module.exports = { pattern: /add/ig, handler: handler }
