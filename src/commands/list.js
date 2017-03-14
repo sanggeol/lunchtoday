@@ -17,7 +17,6 @@ const handler = (payload, res) => {
     Restaurants.find({}).exec(function(err, result) {
       if (!err) {
           console.log('restaurants found in the list')
-          console.log(result.select('restaurant_name'))
           res.send(JSON.stringify(result.select('restaurant_name'), undefined, 2));
       } else {
           console.log(err)
