@@ -70,7 +70,7 @@ const handler = (payload, res) => {
 }
 
 var create_restaurant = function(user_name, user_id, team_name, team_id, restaurant_name){
-	Restaurants.create({user_name: user_name,
+	return Restaurants.create({user_name: user_name,
                   user_id: user_id,
                	  team_name: team_name,
           	  team_id: team_id,
