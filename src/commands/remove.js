@@ -27,8 +27,18 @@ const handler = (payload, res) => {
   
   console.log("restaurant name is " + restaurant_name)
   
-  if(blocks[0]=="remove"){    
-      if(blocks.length == 2 && blocks[0]=="remove"){
+  if(blocks[0]=="remove" && blocks.length > 1 ){    
+     Restaurants.find({
+      restaurant_name: restaurant_name
+     }).exec(function(err, result) {
+        if (!err) {
+          console.log("find!")
+          // handle result
+        } else {
+          console.log("없다!") 
+          // error handling
+        };
+      });
 
   		  let attachments = [
   		  {
@@ -41,7 +51,6 @@ const handler = (payload, res) => {
 		    channel: payload.channel_name,
 		    attachments: attachments
 		    }, msgDefaults)
-
 		    res.set('content-type', 'application/json')
 		    res.status(200).json(msg)
                      
