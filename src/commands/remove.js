@@ -30,9 +30,10 @@ const handler = (payload, res) => {
   if(blocks[0]=="remove" && blocks.length > 1 ){    
      Restaurants.find({
       restaurant_name: restaurant_name
-     }).exec(function(err, result) {
+     }).remove().exec(function(err, result) {
         if (!err) {
-          console.log("find!")
+          console.log("remove?")
+
           // handle result
         } else {
           console.log("없다!") 
@@ -44,7 +45,7 @@ const handler = (payload, res) => {
   		  {
   	 	    title: 'Lunch Today!',
 	   	    color: '#2FA44F',
-	 	      text: "restaurant " + restaurant_name + "removed!",
+	 	      text: "restaurant " + restaurant_name + " removed!",
 		     mrkdwn_in: ['text']
 		    }]
 		    let msg = _.defaults({
