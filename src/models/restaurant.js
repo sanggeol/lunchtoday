@@ -17,7 +17,7 @@ var restaurantSchema = new mongoose.Schema({
   { timestamps: true }
 );
 
-introSchema.plugin(findOrCreate);
+restaurantSchema.plugin(findOrCreate);
 
 var Restaurants = mongoose.model("Restaurants", restaurantSchema);
 
