@@ -14,7 +14,7 @@ const msgDefaults = {
 
 const handler = (payload, res) => {
     console.log('list handler initiated')
-    Restaurants.find({}).exec(function(err, result) {
+    Restaurants.find({}).select('restaurant_name').exec(function(err, result) {
       if (!err) {
           console.log('restaurants found in the list')
           console.log(result)
