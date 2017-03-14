@@ -30,12 +30,13 @@ const handler = (payload, res) => {
   if(blocks[0]=="remove" && blocks.length > 1 ){    
      Restaurants.find({
       restaurant_name: restaurant_name
-     }).remove().exec(function(err, result) {
+     }).remove().exec(function(err) {
 
         var result_msg = " Succeed"
         if (!err) {
           // handle result
         } else {
+          console.log("Error")
           console.log(err)
           result_msg = " failed" 
           // error handling
@@ -53,8 +54,6 @@ const handler = (payload, res) => {
         }, msgDefaults)
         res.set('content-type', 'application/json')
         res.status(200).json(msg)
-
-
       });
   }
   else{
