@@ -23,7 +23,10 @@ if (config('PROXY_URI')) {
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.get('/', (req, res) => { res.send('\n 👋 🌍 \n') })
+app.get('/', (req, res) => { 
+  console.log("Hello world")
+  res.send('\n 👋 🌍 \n') 
+})
 
 app.post('/commands/starbot', (req, res) => {
   let payload = req.body
@@ -35,7 +38,12 @@ app.post('/commands/starbot', (req, res) => {
     res.status(401).end(err)
     return
   }
+  
+
   console.log("Hello world")
+
+  console.log(payload)
+
 
   let task = listCommand
 
