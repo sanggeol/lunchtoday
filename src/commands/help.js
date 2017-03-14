@@ -14,7 +14,7 @@ let attachments = [
   {
     title: 'Lunchtoday will pick a lunch spot for you!',
     color: '#2FA44F',
-    text: '`/lunch` returns a lunch restaurant. Don''t worry. You don''t have a choice.  \n`/lunch list` returns list of all lunch restaurants.',
+    text: '`/lunch` returns a lunch restaurant. Don/'t worry. You don/'t have to choose!  \n`/lunch list` returns list of all lunch restaurants.',
     mrkdwn_in: ['text']
   },
   {
