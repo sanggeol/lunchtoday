@@ -12,7 +12,7 @@ const msgDefaults = {
 
 let attachments = [
   {
-    title: 'Lunchtoday will pick a lunch spot for you!',
+    title: 'Lunchtoday will pick spot for you!^^',
     color: '#2FA44F',
     text: '`/lunch` returns a lunch restaurant. No need to choose!  \n`/lunch list` returns list of all lunch restaurants.',
     mrkdwn_in: ['text']
