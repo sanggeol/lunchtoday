@@ -53,12 +53,6 @@ const handler = (payload, res) => {
 		    }, msgDefaults)
 		    res.set('content-type', 'application/json')
 		    res.status(200).json(msg)
-                     
-      }
-      else if(blocks.length < 2){
-          console.log("restaurant name not supplied")
-          res.send("restaurant name is needed! See help")
-      }
   }
   else{
       console.log("not an remove command")
