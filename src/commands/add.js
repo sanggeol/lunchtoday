@@ -39,7 +39,7 @@ const handler = (payload, res) => {
               }
           })           
       }
-      elseif(blocks.length < 2){
+      else if(blocks.length < 2){
           console.log("restaurant name not supplied")
           res.send("restaurant name is needed! See help")
       }
