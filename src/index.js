@@ -8,6 +8,7 @@ const _ = require('lodash')
 const config = require('./config')
 const commands = require('./commands')
 const helpCommand = require('./commands/help')
+const listCommand = require('./commands/list')
 
 let bot = require('./bot')
 
@@ -37,7 +38,7 @@ app.post('/commands/starbot', (req, res) => {
 
   let cmd = _.reduce(commands, (a, cmd) => {
     return payload.text.match(cmd.pattern) ? cmd : a
-  }, helpCommand)
+  }, listCommand)
 
   cmd.handler(payload, res)
 })
