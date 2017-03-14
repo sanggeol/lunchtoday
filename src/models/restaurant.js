@@ -2,6 +2,13 @@
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/lunchtoday');
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+  console.log("we're connected!")
+});
+
 //and the plugin
 var findOrCreate = require('mongoose-findorcreate')
 
