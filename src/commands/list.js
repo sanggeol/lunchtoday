@@ -27,7 +27,7 @@ const handler = (payload, res) => {
     {
       title: 'list of restaurants',
       color: '#2FA44F',
-      text: 'Myeong-Gung \n Dong-gang\n',
+      text: 'Myeong-Gung \n Dong-gang\n 놀-부\n',
       mrkdwn_in: ['text']
     },
     ]
