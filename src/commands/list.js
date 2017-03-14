@@ -13,19 +13,11 @@ const msgDefaults = {
 }
 
 const handler = (payload, res) => {
-  trending('javascript', (err, repos) => {
-    if (err) throw err
-
-//     var attachments = repos.slice(0, 5).map((repo) => {
-//       return {
-//         title: `${repo.owner}/${repo.title} `,
-//         title_link: repo.url,
-//         text: `_${repo.description}_\n${repo.language} • ${repo.star}>`,
-//         mrkdwn_in: ['text', 'pretext']
-//       }
-//     })
+    console.log('list handler initiated')
     Restaurants.find({}).exec(function(err, result) {
       if (!err) {
+          console.log('restaurants found in the list')
+          console.log(result)
           res.send(JSON.stringify(result, undefined, 2));
       } else {
           console.log(err)
@@ -33,15 +25,15 @@ const handler = (payload, res) => {
       };
     });
     
+    console.log('herehere')
 //    let msg = _.defaults({
 //      channel: payload.channel_name,
 //      attachments: attachments
 //    }, msgDefaults)
-
 //    res.set('content-type', 'application/json')
 //    res.status(200).json(msg)
+
     return
-  })
 }
 
 module.exports = { pattern: /list/ig, handler: handler }
