@@ -13,6 +13,8 @@ const msgDefaults = {
 }
 
 const handler = (payload, res) => {
+  console.log("add handler initiated")
+
   var team_name = payload.team_domain
   var team_id = payload.team_id
   var user_name = payload.user_name
@@ -20,6 +22,8 @@ const handler = (payload, res) => {
 
   var text = payload.text
   var blocks = text.split(" ")
+
+  console.log("restaurant name is" + blocks[1])
       
   if(blocks.length > 2 && blocks[0]=="add"){
       var restaurant_name = blocks[1]
@@ -30,6 +34,7 @@ const handler = (payload, res) => {
           }
           else{
 	      added_restaurant.save(function (err) {if (err) console.log ('Error on save!')});
+	      console.log("restaurant " + restaurant_name + " saved.")
           }
       })           
   }
@@ -38,7 +43,7 @@ const handler = (payload, res) => {
   {
     title: 'Lunch Today!',
     color: '#2FA44F',
-    text: 'restaurant added',
+    text: 'restaurant' + restaurant_name + ' added',
     mrkdwn_in: ['text']
   }]
 
