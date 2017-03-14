@@ -1,5 +1,7 @@
 'use strict'
 
+var Restaurants      = require('../models/restaurant')
+
 const _ = require('lodash')
 const config = require('../config')
 const trending = require('github-trending')
@@ -22,23 +24,23 @@ const handler = (payload, res) => {
 //         mrkdwn_in: ['text', 'pretext']
 //       }
 //     })
+    Restaurants.find({}).exec(function(err, result) {
+      if (!err) {
+          res.write(html1 + JSON.stringify(result, undefined, 2) +  html2 + result.length + html3);
+          res.end(html4 + JSON.stringify(result, undefined, 2) + html5 + result.length + html6);
+      } else {
+          console.log(err)
+          res.send(500)
+      };
+    });
     
-    let attachments = [
-    {
-      title: 'list of restaurants',
-      color: '#2FA44F',
-      text: 'Myeong-Gung \n Dong-gang\n 놀-부\n',
-      mrkdwn_in: ['text']
-    },
-    ]
+//    let msg = _.defaults({
+//      channel: payload.channel_name,
+//      attachments: attachments
+//    }, msgDefaults)
 
-    let msg = _.defaults({
-      channel: payload.channel_name,
-      attachments: attachments
-    }, msgDefaults)
-
-    res.set('content-type', 'application/json')
-    res.status(200).json(msg)
+//    res.set('content-type', 'application/json')
+//    res.status(200).json(msg)
     return
   })
 }
