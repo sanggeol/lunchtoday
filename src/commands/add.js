@@ -13,18 +13,34 @@ const msgDefaults = {
 }
 
 const handler = (payload, res) => {
-      var team_name = payload.team_domain
-      var team_id = payload.team_id
-      var user_name = payload.user_name
-      var user_id = payload.user_id
+  var team_name = payload.team_domain
+  var team_id = payload.team_id
+  var user_name = payload.user_name
+  var user_id = payload.user_id
 
-      var text = payload.text
-      var blocks = text.split(" ")
+  var text = payload.text
+  var blocks = text.split(" ")
       
-      if(blocks.length > 2 && blocks[0]=="add"){
-          var restaurant_name = blocks[1]
-          create_restaurant(user_name, user_id, team_name, team_id, restaurant_name)           
-      }
+  if(blocks.length > 2 && blocks[0]=="add"){
+      var restaurant_name = blocks[1]
+      create_restaurant(user_name, user_id, team_name, team_id, restaurant_name)           
+  }
+
+  let attachments = [
+  {
+    title: 'Lunch Today!',
+    color: '#2FA44F',
+    text: 'restaurant added',
+    mrkdwn_in: ['text']
+  }]
+
+  let msg = _.defaults({
+    channel: payload.channel_name,
+    attachments: attachments
+  }, msgDefaults)
+
+  res.set('content-type', 'application/json')
+  res.status(200).json(msg)
 
   return
 }
