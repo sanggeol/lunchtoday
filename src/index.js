@@ -36,9 +36,11 @@ app.post('/commands/starbot', (req, res) => {
     return
   }
 
+  let task = listCommand
+
   let cmd = _.reduce(commands, (a, cmd) => {
     return payload.text.match(cmd.pattern) ? cmd : a
-  }, helpCommand)
+  }, task)
 
   cmd.handler(payload, res)
 })
