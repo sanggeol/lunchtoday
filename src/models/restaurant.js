@@ -1,5 +1,6 @@
 // grab the mongoose module
 var mongoose = require('mongoose');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/lunchtoday');
 
 //and the plugin
 var findOrCreate = require('mongoose-findorcreate')
