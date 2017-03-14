@@ -30,7 +30,9 @@ const handler = (payload, res) => {
   if(blocks[0]=="remove" && blocks.length > 1 ){    
      Restaurants.find({
       restaurant_name: restaurant_name
-     }).remove().exec(function(err) {
+     }).remove().exec(function(err, result) {
+
+        console.log(result)
 
         var result_msg = " Succeed"
         if (!err) {
@@ -54,7 +56,7 @@ const handler = (payload, res) => {
         }, msgDefaults)
         res.set('content-type', 'application/json')
         res.status(200).json(msg)
-      });
+      })
   }
   else{
       console.log("not an remove command")
