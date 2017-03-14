@@ -14,23 +14,23 @@ const handler = (payload, res) => {
   trending('javascript', (err, repos) => {
     if (err) throw err
 
-    var attachments = repos.slice(0, 5).map((repo) => {
-      return {
-        title: `${repo.owner}/${repo.title} `,
-        title_link: repo.url,
-        text: `_${repo.description}_\n${repo.language} • ${repo.star}>`,
-        mrkdwn_in: ['text', 'pretext']
-      }
-    })
+//     var attachments = repos.slice(0, 5).map((repo) => {
+//       return {
+//         title: `${repo.owner}/${repo.title} `,
+//         title_link: repo.url,
+//         text: `_${repo.description}_\n${repo.language} • ${repo.star}>`,
+//         mrkdwn_in: ['text', 'pretext']
+//       }
+//     })
     
-//     let attachments = [
-//     {
-//       title: 'list of restaurants',
-//       color: '#2FA44F',
-//       text: 'Myeong-Gung \n Dong-gang\n',
-//       mrkdwn_in: ['text']
-//     },
-//     ]
+    let attachments = [
+    {
+      title: 'list of restaurants',
+      color: '#2FA44F',
+      text: 'Myeong-Gung \n Dong-gang\n',
+      mrkdwn_in: ['text']
+    },
+    ]
 
     let msg = _.defaults({
       channel: payload.channel_name,
