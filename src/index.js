@@ -35,8 +35,8 @@ app.post('/commands/starbot', (req, res) => {
     res.status(401).end(err)
     return
   }
-  console.log(payload)
-  
+  console.log("Hello world")
+
   let task = listCommand
 
   let cmd = _.reduce(commands, (a, cmd) => {
