@@ -43,7 +43,8 @@ app.post('/commands/starbot', (req, res) => {
 
   console.log(payload)
 
-  let task
+  let task = helpCommand
+  
   switch(payload.text){
     case 'list' : 
         task = listCommand
