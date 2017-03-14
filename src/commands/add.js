@@ -27,6 +27,7 @@ const handler = (payload, res) => {
   
   if(blocks[0]=="add"){    
       if(blocks.length == 2 && blocks[0]=="add"){
+          console.log("WE ARE HERE")
           var restaurant_name = blocks[1]
           create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
               if(err){
