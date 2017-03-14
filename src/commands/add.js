@@ -1,6 +1,6 @@
 'use strict'
 
-var Restaurant      = require('../models/restaurant')
+var Restaurants      = require('../models/restaurant')
 
 const _ = require('lodash')
 const config = require('../config')
@@ -23,12 +23,13 @@ const handler = (payload, res) => {
       
   if(blocks.length > 2 && blocks[0]=="add"){
       var restaurant_name = blocks[1]
-      create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,restaurant){
+      create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
           if(err){
               console.log(err)
               res.send(500)
           }
           else{
+	      added_restaurant.save(function (err) {if (err) console.log ('Error on save!')});
           }
       })           
   }
@@ -53,7 +54,7 @@ const handler = (payload, res) => {
 }
 
 var create_restaurant = function(user_name, user_id, team_name, team_id, restaurant_name){
-	Restaurant.create({user_name: user_name,
+	Restaurants.create({user_name: user_name,
                   user_id: user_id,
                	  team_name: team_name,
           	  team_id: team_id,
