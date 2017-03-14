@@ -32,22 +32,16 @@ const handler = (payload, res) => {
       restaurant_name: restaurant_name
      }).remove().exec(function(err, result) {
 
-        console.log(result)
-
-        var result_msg = " Succeed"
         if (!err) {
           // handle result
         } else {
-          console.log("Error")
-          console.log(err)
-          result_msg = " failed" 
           // error handling
         }
         let attachments = [
         {
           title: 'Lunch Today!',
           color: '#2FA44F',
-          text: "Remove restaurant " + restaurant_name + result_msg,
+          text: "Remove restaurant : " + restaurant_name,
          mrkdwn_in: ['text']
         }]
         let msg = _.defaults({
