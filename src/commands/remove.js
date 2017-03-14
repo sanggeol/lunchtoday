@@ -31,29 +31,31 @@ const handler = (payload, res) => {
      Restaurants.find({
       restaurant_name: restaurant_name
      }).remove().exec(function(err, result) {
-        if (!err) {
-          console.log("remove?")
 
+        var result_msg = " Succeed"
+        if (!err) {
           // handle result
         } else {
-          console.log("없다!") 
+          console.log(err)
+          result_msg = " failed" 
           // error handling
-        };
-      });
+        }
+        let attachments = [
+        {
+          title: 'Lunch Today!',
+          color: '#2FA44F',
+          text: "Remove restaurant " + restaurant_name + result_msg,
+         mrkdwn_in: ['text']
+        }]
+        let msg = _.defaults({
+        channel: payload.channel_name,
+        attachments: attachments
+        }, msgDefaults)
+        res.set('content-type', 'application/json')
+        res.status(200).json(msg)
 
-  		  let attachments = [
-  		  {
-  	 	    title: 'Lunch Today!',
-	   	    color: '#2FA44F',
-	 	      text: "restaurant " + restaurant_name + " removed!",
-		     mrkdwn_in: ['text']
-		    }]
-		    let msg = _.defaults({
-		    channel: payload.channel_name,
-		    attachments: attachments
-		    }, msgDefaults)
-		    res.set('content-type', 'application/json')
-		    res.status(200).json(msg)
+
+      });
   }
   else{
       console.log("not an remove command")
