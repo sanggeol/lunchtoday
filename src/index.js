@@ -37,7 +37,7 @@ app.post('/commands/starbot', (req, res) => {
   
   var date = new Date()
   console.log(date)
-  
+  console.log(Date.today())
   console.log(payload)
 
   let cmd = _.reduce(commands, (a, cmd) => {
