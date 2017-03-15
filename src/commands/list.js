@@ -18,6 +18,7 @@ const handler = (payload, res) => {
       if (!err) {
           console.log('restaurants found in the list')
           console.log(JSON.stringify(result[0].restaurant_name, undefined, 2));
+          console.log(result.length)
           for(var i = 0; i < result.length; i++) {
               res.write(JSON.stringify(result[i].restaurant_name, undefined, 2));
           }
