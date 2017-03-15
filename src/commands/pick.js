@@ -13,12 +13,12 @@ const msgDefaults = {
 }
 
 const handler = (payload, res) => {
-    console.log('list handler initiated')
+    console.log('pick handler initiated')
     Restaurants.find({}).select('restaurant_name -_id').exec(function(err, result) {
       if (!err) {
           console.log(result.length + ' restaurants found in the list')
-          restaurant_picked_number = 0
-          restaurant_picked = result[restaurant_picked_number]
+          var restaurant_picked_number = 0
+          var restaurant_picked = result[restaurant_picked_number]
         
           let attachments = [
           {
@@ -46,4 +46,4 @@ const handler = (payload, res) => {
     return
 }
 
-module.exports = { pattern: /list/ig, handler: handler }
+module.exports = { pattern: /pick/ig, handler: handler }
