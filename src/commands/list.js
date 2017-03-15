@@ -22,16 +22,16 @@ const handler = (payload, res) => {
             rest_list += JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n'     
           }
           rest_list += '### total '+ result.length + ' restaurants listed ###'
-          let attachments = [
-          {
-          title: 'List of restaurants',
-          color: '#2FA44F',
-          text: rest_list,
-          mrkdwn_in: ['text']
-          }]
+//           let attachments = [
+//           {
+//           title: 'List of restaurants',
+//           color: '#2FA44F',
+//           text: rest_list,
+//           mrkdwn_in: ['text']
+//           }]
           let msg = _.defaults({
             channel: payload.channel_name,
-            attachments: attachments,
+//             attachments: attachments,
             text: rest_list
           }, msgDefaults)
           res.set('content-type', 'application/json')
