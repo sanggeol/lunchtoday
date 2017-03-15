@@ -40,7 +40,8 @@ app.post('/commands/starbot', (req, res) => {
   var hours = c_date.getHours()
   console.log(hours)
   //서울시간(GMT 9 으로 변경하기 위해 9를 더해야함 )
-  hours += 9
+  hours = hours + 9 < 24 ? hours : hours - 24
+
   console.log(hours + ": Seoul")
 
   //todo check
