@@ -14,10 +14,10 @@ const msgDefaults = {
 
 const handler = (payload, res) => {
     console.log('list handler initiated')
-    Restaurants.find({}).select('restaurant_name').exec(function(err, result) {
+    Restaurants.find({}).select('restaurant_name -_id').exec(function(err, result) {
       if (!err) {
           console.log('restaurants found in the list')
-          res.send(JSON.stringify(result, undefined, 2));
+          res.send(JSON.stringify(result.restaurant_name, undefined, 2));
       } else {
           console.log(err)
           res.send(500)
