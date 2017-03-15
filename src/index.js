@@ -43,14 +43,16 @@ app.post('/commands/starbot', (req, res) => {
   hours += 9
   console.log(hours + ": Seoul")
 
-
-  console.log(payload)
-
-  let cmd = _.reduce(commands, (a, cmd) => {
-    return payload.text.match(cmd.pattern) ? cmd : a
-  }, defaultCommand)
-
-  cmd.handler(payload, res)
+  if(hours < 13){
+      console.log(payload)
+      let cmd = _.reduce(commands, (a, cmd) => {
+                return payload.text.match(cmd.pattern) ? cmd : a
+                }, defaultCommand)
+      cmd.handler(payload, res)
+  }else{
+    res.end("죄송합니다. 영업시간이 아닙니다.")
+    return
+  }
 })
 
 app.listen(config('PORT'), (err) => {
