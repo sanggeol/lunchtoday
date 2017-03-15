@@ -1,6 +1,8 @@
 
 'use strict'
 
+var GoogleMapsAPI = require('googlemaps')
+
 var publicConfig = {
   key: 'AIzaSyAPKefB_eM0X050XxQLgQBrjX7OQuyP6Oc',
   stagger_time:       1000, // for elevationPath 
@@ -19,9 +21,9 @@ exports.test = function(){
   	"bounds":     "55,-1|54,1",
   	"language":   "en",
   	"region":     "uk"
-	};
+	}
+
  	gmAPI.geocode(geocodeParams, function(err, result){
-  	
   	return result
-	});
+	})
 }
