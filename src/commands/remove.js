@@ -31,19 +31,17 @@ const handler = (payload, res) => {
 
     Restaurants.remove({restaurant_name: restaurant_name},
       function(err, removed) {
-        if(removed.length > 0){
-          console.log("ohio")
-        }else{
-          console.log("hello")
+      
+        var result_msg = " 이 목록에서 제거되었습니다."
+        if(removed.length == 0){
+          result_msg = "은(는) 목록에 존재하지 않습니다."
         }
-        if(err) {
-      // 에러 throw
-         }      
+
        let attachments = [
         {
           title: 'Lunch Today!',
           color: '#2FA44F',
-          text: "Remove restaurant : " + restaurant_name,
+          text: restaurant_name + result_msg ,
          mrkdwn_in: ['text']
         }]
         let msg = _.defaults({
