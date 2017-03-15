@@ -41,7 +41,7 @@ app.post('/commands/starbot', (req, res) => {
   console.log(hours)
   //서울시간(GMT 9 으로 변경하기 위해 9를 더해야함 )
   hours += 9
-  console.log(hours)
+  console.log(hours + ": Seoul")
 
 
   console.log(payload)
