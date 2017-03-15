@@ -33,8 +33,10 @@ const handler = (payload, res) => {
       function(err, result) {
       if(err) {
       // 에러 throw
-        console.log("nothing.")
       }
+      console.log(err)
+      console.log(result)
+      
        let attachments = [
         {
           title: 'Lunch Today!',
