@@ -8,7 +8,7 @@ const trending = require('github-trending')
 
 const msgDefaults = {
   response_type: 'in_channel',
-  username: 'Starbot',
+  username: 'lunchtoday',
   icon_emoji: config('ICON_EMOJI')
 }
 
@@ -16,13 +16,28 @@ const handler = (payload, res) => {
     console.log('list handler initiated')
     Restaurants.find({}).select('restaurant_name -_id').exec(function(err, result) {
       if (!err) {
-          console.log('restaurants found in the list')
-          console.log(result.length)
-          console.log(JSON.stringify(result[0].restaurant_name, undefined, 2));
+          console.log(result.length + ' restaurants found in the list')
+          var rest_list = ''
           for(var i = 0; i < result.length; i++) {
-              res.write(JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n' );
+//               res.write(JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n' );
+            rest_list += JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n'     
           }
-          res.end('### total '+ result.length + ' restaurants listed ###')
+//           res.end('### total '+ result.length + ' restaurants listed ###')
+          rest_list += '### total '+ result.length + ' restaurants listed ###'
+          let attachments = [
+          {
+          title: 'List of restaurants',
+          color: '#2FA44F',
+          text: rest_list,
+          mrkdwn_in: ['text']
+          }]
+          let msg = _.defaults({
+            channel: payload.channel_name,
+            attachments: attachments
+          }, msgDefaults)
+          res.set('content-type', 'application/json')
+          res.status(200).json(msg)
+        
       } else {
           console.log(err)
           res.send(500)
@@ -30,12 +45,7 @@ const handler = (payload, res) => {
     });
     
     console.log('herehere')
-//    let msg = _.defaults({
-//      channel: payload.channel_name,
-//      attachments: attachments
-//    }, msgDefaults)
-//    res.set('content-type', 'application/json')
-//    res.status(200).json(msg)
+
 
     return
 }
