@@ -38,8 +38,8 @@ app.post('/commands/starbot', (req, res) => {
   var date = new Date()
 
   console.log(date)
-
-  console.log(Data.getHours())
+  
+  console.log(Date.getHours())
 
   console.log(payload)
 
