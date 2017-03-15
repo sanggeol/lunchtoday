@@ -19,6 +19,16 @@ const handler = (payload, res) => {
           console.log(result.length + ' restaurants found in the list')
           restaurant_picked_number = 0
           restaurant_picked = result[restaurant_picked_number]
+        
+          let attachments = [
+          {
+              title: 'today\'s lunch spot is...',
+              color: '#2FA44F',
+              text: restaurant_picked.restaurant_name,
+              mrkdwn_in: ['text']
+          },
+          ]
+
       } else {
           console.log(err)
           res.send(500)
