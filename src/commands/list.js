@@ -9,7 +9,8 @@ const trending = require('github-trending')
 const msgDefaults = {
   response_type: 'in_channel',
   username: 'lunchtoday',
-  icon_emoji: config('ICON_EMOJI')
+  icon_emoji: config('ICON_EMOJI'),
+  unfurl_links: true
 }
 
 const handler = (payload, res) => {
