@@ -20,7 +20,7 @@ const handler = (payload, res) => {
           console.log(result.length)
           console.log(JSON.stringify(result[0].restaurant_name, undefined, 2));
           for(var i = 0; i < result.length; i++) {
-              res.write(JSON.stringify(result[i].restaurant_name, undefined, 2));
+              res.write(JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n' );
           }
           res.end('### total '+ result.length + ' restaurants listed ###')
       } else {
