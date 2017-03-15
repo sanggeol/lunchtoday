@@ -8,6 +8,8 @@ const _ = require('lodash')
 const config = require('./config')
 const commands = require('./commands')
 
+const navigation = require('./navigation')
+
 const defaultCommand = require('./commands/pick')
 
 let bot = require('./bot')
@@ -45,7 +47,7 @@ app.post('/commands/starbot', (req, res) => {
     hours -= 24
   }
   console.log(hours + ": Seoul")
-
+  console.log(navigation.test())
   //todo check
   //today history
   if(payload.text == "" &&
