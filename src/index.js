@@ -36,8 +36,8 @@ app.post('/commands/starbot', (req, res) => {
   }
 
   //return current time GMT 0   
-  var date = new Date()
-  var hours = date.getHours()
+  var c_date = new Date()
+  var hours = c_date.getHours()
   console.log(hours)
   //서울시간(GMT 9 으로 변경하기 위해 9를 더해야함 )
   hours += 9
