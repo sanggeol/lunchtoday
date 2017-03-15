@@ -17,7 +17,7 @@ const handler = (payload, res) => {
     Restaurants.find({}).select('restaurant_name -_id').exec(function(err, result) {
       if (!err) {
           console.log(result.length + ' restaurants found in the list')
-          var restaurant_picked_number = 0
+          var restaurant_picked_number = randomIntInc(0,result.length)
           var restaurant_picked = result[restaurant_picked_number]
         
           let attachments = [
@@ -45,5 +45,10 @@ const handler = (payload, res) => {
 
     return
 }
+
+function randomIntInc (low, high) {
+    return Math.floor(Math.random() * (high - low ) + low);
+}
+
 
 module.exports = { pattern: /pick/ig, handler: handler }
