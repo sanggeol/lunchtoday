@@ -5,16 +5,15 @@ const _ = require('lodash')
 const config = require('../config')
 
 const msgDefaults = {
-  response_type: 'in_channel',
-  username: 'Starbot',
+  username: 'lunchtoday',
   icon_emoji: config('ICON_EMOJI')
 }
 
 let attachments = [
   {
-    title: 'Lunchtoday will pick a spot for you! 123',
+    title: 'Lunchtoday will pick a spot for you!',
     color: '#2FA44F',
-    text: '`/lunch` returns a lunch restaurant. No need to choose!  \n`/lunch list` returns list of all lunch restaurants.',
+    text: '`/lunch` or `/lunch pick` returns a lunch restaurant. No need to choose!  \n`/lunch list` returns list of all lunch restaurants.',
     mrkdwn_in: ['text']
   },
   {
