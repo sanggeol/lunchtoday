@@ -24,6 +24,6 @@ exports.test = function(){
 	}
 
  	gmAPI.geocode(geocodeParams, function(err, result){
-  	return result
+    console.log(result);
 	})
 }
