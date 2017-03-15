@@ -28,6 +28,13 @@ const handler = (payload, res) => {
               mrkdwn_in: ['text']
           },
           ]
+          console.log('herehere')
+          let msg = _.defaults({
+              channel: payload.channel_name,
+              attachments: attachments
+          }, msgDefaults)
+          res.set('content-type', 'application/json')
+          res.status(200).json(msg)
 
       } else {
           console.log(err)
@@ -35,13 +42,6 @@ const handler = (payload, res) => {
       };
     });
     
-    console.log('herehere')
-    let msg = _.defaults({
-      channel: payload.channel_name,
-      attachments: attachments
-    }, msgDefaults)
-    res.set('content-type', 'application/json')
-    res.status(200).json(msg)
 
     return
 }
