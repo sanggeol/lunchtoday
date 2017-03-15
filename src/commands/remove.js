@@ -28,16 +28,18 @@ const handler = (payload, res) => {
   console.log("restaurant name is " + restaurant_name)
   
   if(blocks[0]=="remove" && blocks.length > 1 ){    
-     Restaurants.find({
-      restaurant_name: restaurant_name
-     }).remove().exec(function(err, result) {
 
-        if (!err) {
-          // handle result
-        } else {
-          // error handling
+    Restaurants.remove({restaurant_name: restaurant_name},
+      function(err, removed) {
+        if(removed.length > 0){
+          console.log("ohio")
+        }else{
+          console.log("hello")
         }
-        let attachments = [
+        if(err) {
+      // 에러 throw
+         }      
+       let attachments = [
         {
           title: 'Lunch Today!',
           color: '#2FA44F',
@@ -50,7 +52,7 @@ const handler = (payload, res) => {
         }, msgDefaults)
         res.set('content-type', 'application/json')
         res.status(200).json(msg)
-      })
+      });
   }
   else{
       console.log("not an remove command")
