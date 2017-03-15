@@ -34,12 +34,15 @@ app.post('/commands/starbot', (req, res) => {
     res.status(401).end(err)
     return
   }
-  
-  var date = new Date()
 
-  console.log(date)
-  
-  console.log(Date.getHours())
+  //return current time GMT 0   
+  var date = new Date()
+  var hours = date.getHours()
+  console.log(hours)
+  //서울시간(GMT 9 으로 변경하기 위해 9를 더해야함 )
+  hours += 9
+  console.log(hours)
+
 
   console.log(payload)
 
