@@ -10,7 +10,6 @@ const msgDefaults = {
   response_type: 'in_channel',
   username: 'lunchtoday',
   icon_emoji: config('ICON_EMOJI'),
-  unfurl_links: true
 }
 
 const handler = (payload, res) => {
@@ -20,10 +19,8 @@ const handler = (payload, res) => {
           console.log(result.length + ' restaurants found in the list')
           var rest_list = ''
           for(var i = 0; i < result.length; i++) {
-//               res.write(JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n' );
             rest_list += JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n'     
           }
-//           res.end('### total '+ result.length + ' restaurants listed ###')
           rest_list += '### total '+ result.length + ' restaurants listed ###'
           let attachments = [
           {
@@ -34,7 +31,8 @@ const handler = (payload, res) => {
           }]
           let msg = _.defaults({
             channel: payload.channel_name,
-            attachments: attachments
+            attachments: attachments,
+            text: rest_list
           }, msgDefaults)
           res.set('content-type', 'application/json')
           res.status(200).json(msg)
