@@ -34,6 +34,10 @@ const handler = (payload, res) => {
       
         var result_msg = " 이 목록에서 제거되었습니다."
         
+        console.log(removed.result.n)
+        
+
+
         if(removed.length > 0){
 
         }else{
