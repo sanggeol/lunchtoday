@@ -35,6 +35,10 @@ app.post('/commands/starbot', (req, res) => {
     return
   }
   
+  var date = new Date()
+
+  console.log(date)
+
   console.log(Data.getHours())
 
   console.log(payload)
