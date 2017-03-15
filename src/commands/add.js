@@ -59,7 +59,7 @@ const handler = (payload, res) => {
 		  	})     			  			  
 	      	  }
     	          else{
-		  	  console.log('restaurant ' + restaurant_name + ' is already in the list)
+		  	  console.log('restaurant ' + restaurant_name + ' is already in the list')
 			  let attachments = [
 			  {
 			    title: 'Lunch Today!',
