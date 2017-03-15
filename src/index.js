@@ -7,8 +7,8 @@ const bodyParser = require('body-parser')
 const _ = require('lodash')
 const config = require('./config')
 const commands = require('./commands')
-const helpCommand = require('./commands/help')
-const listCommand = require('./commands/list')
+
+const defaultCommand = require('./commands/pick')
 
 let bot = require('./bot')
 
@@ -41,12 +41,9 @@ app.post('/commands/starbot', (req, res) => {
   
   console.log(payload)
 
-  let task = helpCommand
-
-
   let cmd = _.reduce(commands, (a, cmd) => {
     return payload.text.match(cmd.pattern) ? cmd : a
-  }, task)
+  }, defaultCommand)
 
   cmd.handler(payload, res)
 })
