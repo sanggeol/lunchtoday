@@ -30,13 +30,15 @@ const handler = (payload, res) => {
   if(blocks[0]=="remove" && blocks.length > 1 ){    
 
     Restaurants.remove({restaurant_name: restaurant_name},
-      function(err, result) {
-      if(err) {
+      function(err, removed) {
+        if(removed.length > 0){
+          console.log("ohio")
+        }else{
+          console.log("hello")
+        }
+        if(err) {
       // 에러 throw
-      }
-      console.log(err)
-      console.log(result)
-      
+         }      
        let attachments = [
         {
           title: 'Lunch Today!',
@@ -50,7 +52,6 @@ const handler = (payload, res) => {
         }, msgDefaults)
         res.set('content-type', 'application/json')
         res.status(200).json(msg)
-       // 삭제 후 행동
       });
   }
   else{
