@@ -19,7 +19,8 @@ const handler = (payload, res) => {
           console.log(result.length + ' restaurants found in the list')
           var rest_list = ''
           for(var i = 0; i < result.length; i++) {
-            rest_list += JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n'     
+//             rest_list += JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n'     
+            rest_list += result[i].restaurant_name + '\n'
           }
           rest_list += '### total '+ result.length + ' restaurants listed ###'
 //           let attachments = [
