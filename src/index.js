@@ -48,9 +48,9 @@ app.post('/commands/starbot', (req, res) => {
   }
   console.log(hours + ": Seoul")
 
-  navigation.test(function(err,result)){
-    console.log(result)
-  }
+  navigation.test(function(err,result){
+       console.log(result)
+  })
 
   
   //todo check
