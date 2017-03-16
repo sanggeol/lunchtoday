@@ -1,6 +1,8 @@
 
 'use strict'
 
+var Tmp = require('https://apis.skplanetx.com/tmap/js?version=1&format=javascript&appKey=601b6644-8b51-3678-a1e4-b8032baf0540')
+
 var GoogleMapsAPI = require('googlemaps')
 
 var publicConfig = {
