@@ -14,15 +14,22 @@ var publicConfig = {
 };
 var gmAPI = new GoogleMapsAPI(publicConfig);
 
-exports.tmap_test = function(restaurant,resultcallback){
+exports.tmap_test = function(restaurants,resultcallback){
 
+    //37.509815, 127.064187
     var startName = "KCTech"
-    var startX = 14129105.461214
-    var startY = 4517042.1926406
+    var startX = 37.509815
+    var startY = 127.064187
 
-    var endName = "korea"
-    var endX = 14136027.789587
-    var endY = 4517572.4745242
+
+    //37.510214, 127.064700
+    //todo end seires setup below
+    //restaurants.location.longitude
+    //restaurants.location.latitude
+    //restaurants.restaurant_name
+    var endName = "명궁"
+    var endX = 37.510214
+    var endY = 127.064187
     var urlStr = "https://apis.skplanetx.com/tmap/routes/pedestrian?version=1&format=json"
     urlStr += "&startX="+startX
     urlStr += "&startY="+startY
@@ -34,10 +41,15 @@ exports.tmap_test = function(restaurant,resultcallback){
     request(urlStr, function (error, response, body) {
       //total distance 미터
       //total time : 초
-    console.log(error)
-    console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
-    var routes = JSON.parse(body)
-    console.log(routes.features[0].properties.totalTime)
+      var totaltime
+      if(err){
+        totaltime = -1
+      }else{
+         var routes = JSON.parse(body)
+         totaltime = routes.features[0].properties.totalTime
+      }
+    resultcallback(err,totaltime)
+
 });
 
 }
