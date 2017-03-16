@@ -27,7 +27,7 @@ exports.tmap_test = function(restaurants,resultcallback){
     //restaurants.location.longitude
     //restaurants.location.latitude
     //restaurants.restaurant_name
-    var endName = "명궁"
+    var endName = "restaurants"
     var endX = 37.510214
     var endY = 127.064187
     var urlStr = "https://apis.skplanetx.com/tmap/routes/pedestrian?version=1&format=json"
@@ -43,6 +43,7 @@ exports.tmap_test = function(restaurants,resultcallback){
       //total time : 초
       var totaltime
       if(err){
+        console.log("error: " + err)
         totaltime = -1
       }else{
          var routes = JSON.parse(body)
