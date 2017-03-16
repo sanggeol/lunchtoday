@@ -35,8 +35,8 @@ exports.directions_test = function(resultcallback){
         mode: 'driving',
         traffic_model: 'pessimistic'
       }
-      gmAPI.directions( params, function(err, results) {
-    resultcallback(err,result)
+      gmAPI.directions( params, function(err, result) {
+      resultcallback(err,result)
       })
 
 }
