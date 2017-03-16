@@ -31,9 +31,9 @@ exports.tmap_test = function(resultcallback){
     urlStr += "&endName="+ endName
     urlStr += "&appKey=601b6644-8b51-3678-a1e4-b8032baf0540"
     request(urlStr, function (error, response, body) {
-
+    console.log(error)
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
-
+    console.log(body)
 });
 
 }
