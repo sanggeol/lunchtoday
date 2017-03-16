@@ -19,6 +19,7 @@ var restaurantSchema = new mongoose.Schema({
     user_name: {type: String, default: ''}, //sender of the restaurant
     user_id: {type: String, default: ''},   //sender of the restaurant
     restaurant_name: {type: String, default: ''},
+    weight: {type: Number, default: 0},
     status: {type: String, default: 'listed'}
   },
   { timestamps: true }
