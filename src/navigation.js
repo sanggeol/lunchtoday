@@ -38,7 +38,7 @@ exports.tmap_test = function(restaurants,resultcallback){
     urlStr += "&startName="+ startName
     urlStr += "&endName="+ endName
     urlStr += "&appKey=601b6644-8b51-3678-a1e4-b8032baf0540"
-    request(urlStr, function (error, response, body) {
+    request(urlStr, function (err, response, body) {
       //total distance 미터
       //total time : 초
       var totaltime
