@@ -49,7 +49,14 @@ app.post('/commands/starbot', (req, res) => {
   console.log(hours + ": Seoul")
 
   navigation.tmap_test(null,function(err, totaltime){
-    console.log("time: " + totaltime)
+    
+    var minutes = Math.floor(totaltime / 60);
+
+    var seconds = time - minutes * 60;
+
+    console.log("time: " + totaltime + "sec")
+    console.log(minutes + "분" + seconds + "초 걸립니다.")
+
   })
 
   
