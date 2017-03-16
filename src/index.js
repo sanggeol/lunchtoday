@@ -55,8 +55,7 @@ app.post('/commands/starbot', (req, res) => {
   
   //todo check
   //today history
-  if(payload.text == "" &&
-     11 > hours && hours > 13)
+  if(payload.text == "" && ( hours < 11 || hours > 13 ) )
   {
        res.end("죄송합니다. 영업시간이 아닙니다.")
        return
