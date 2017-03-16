@@ -48,12 +48,8 @@ app.post('/commands/starbot', (req, res) => {
   }
   console.log(hours + ": Seoul")
 
-  navigation.directions_test(function(err,result){
-      if(err){
-
-       }
-       console.log(result)
-      
+  navigation.tmap_test(function(error, response, body){
+  
   })
 
   
