@@ -17,7 +17,34 @@ const handler = (payload, res) => {
     Restaurants.find({}).select('restaurant_name -_id').exec(function(err, result) {
       if (!err) {
           console.log(result.length + ' restaurants found in the list')
-          var restaurant_picked_number = randomIntInc(0,result.length)
+          var softmax_probability_unnormalized = []
+          var sum_of_softmax = 0
+          var C1 = 0.1
+          for(i=0; i<result.length; i++){
+            var temp = Math.exp(Math.multiply(C1, result[i].weight))
+            softmax_probability_unnormalized.push(temp);
+            sum_of_softmax += temp;
+          }
+          console.log('softmax unnormalized ' + softmax_probability_unnormalized)
+          var softmax_probability = []
+          for(i=0; i<result.length; i++){
+            softmax_probability.push(math.divide(softmax_probability_unnormalized, sum_of_softmax))
+          }
+          console.log('softmax probability ' + softmax_probability)
+          var random_number = Math.random()
+          var accumulate_prob = 0
+          var flag = 0
+          var restaurant_picked_number = -1
+          for(i=0; i<result.length; i++){
+            accumulate_prob += softmax_probability
+            if(flag == 0 && random_number < accumulate_prob){
+              flag = 1
+              restaurant_picked_number = i
+            }
+          }
+        console.log('accumulate_prob = ' + accumulate_prob)
+        console.log('restaurant_picked_number = ' + i)
+//           var restaurant_picked_number = randomIntInc(0,result.length)
           var restaurant_picked = result[restaurant_picked_number]
         
           let attachments = [
