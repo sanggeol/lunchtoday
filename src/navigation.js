@@ -47,8 +47,6 @@ exports.tmap_test = function(restaurants,resultcallback){
     request(urlStr, function (err, response, body) {
       //total distance 미터
       //total time : 초
-      console.log("body")
-      console.log(body)
       var totaltime
       if(err){
         console.log("error: " + err)
