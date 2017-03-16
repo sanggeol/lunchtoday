@@ -52,7 +52,7 @@ app.post('/commands/starbot', (req, res) => {
     
     var minutes = Math.floor(totaltime / 60);
 
-    var seconds = time - minutes * 60;
+    var seconds = totaltime - minutes * 60;
 
     console.log("time: " + totaltime + "sec")
     console.log(minutes + "분" + seconds + "초 걸립니다.")
