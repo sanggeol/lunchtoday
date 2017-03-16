@@ -47,7 +47,12 @@ app.post('/commands/starbot', (req, res) => {
     hours -= 24
   }
   console.log(hours + ": Seoul")
-  console.log(navigation.test())
+
+  navigation.test(function(err,result)){
+    console.log(result)
+  }
+
+  
   //todo check
   //today history
   if(payload.text == "" &&
