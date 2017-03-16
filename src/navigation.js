@@ -18,25 +18,20 @@ exports.tmap_test = function(restaurants,resultcallback){
 
     //37.509815, 127.064187
     var startName = "KCTech"
-    var startX = 14129105.461214;
-    var startY = 4517042.1926406;
-
-//    var startY = 37.509815
-//   var startX = 127.064187
-
-
-    //37.510214, 127.064700
+   
+   var startX = 127.064187 
+   var startY = 37.509815
     //todo end seires setup below
     //restaurants.location.longitude
     //restaurants.location.latitude
     //restaurants.restaurant_name
     var endName = "restaurants"
-    var endX = 14136027.789587;
-    var endY = 4517572.4745242;
-
-  //  var endY = 37.510214
-  //  var endX = 127.064187
+   
+    var endX = 127.064187
+    var endY = 37.510214
     var urlStr = "https://apis.skplanetx.com/tmap/routes/pedestrian?version=1&format=json"
+    
+    urlStr += "&reqCoordType=" + WGS84GEO
     urlStr += "&startX="+startX
     urlStr += "&startY="+startY
     urlStr += "&endX="+endX
