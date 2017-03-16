@@ -48,7 +48,7 @@ app.post('/commands/starbot', (req, res) => {
   }
   console.log(hours + ": Seoul")
 
-  navigation.tmap_test(restaurants,function(err, totaltime){
+  navigation.tmap_test(null,function(err, totaltime){
     console.log("time: " + totaltime)
   })
 
