@@ -76,10 +76,10 @@ app.post('/commands/starbot', (req, res) => {
 app.listen(config('PORT'), (err) => {
   if (err) throw err
 
-  console.log(`\n🚀  Starbot LIVES on PORT ${config('PORT')} 🚀`)
+  console.log(`\n🚀  Lunchtoday LIVES on PORT ${config('PORT')} 🚀`)
 
   if (config('SLACK_TOKEN')) {
-    console.log(`🤖  beep boop: @starbot is real-time\n`)
+    console.log(`🤖  beep boop: @lunchtoday is real-time\n`)
     bot.listen({ token: config('SLACK_TOKEN') })
   }
 })
