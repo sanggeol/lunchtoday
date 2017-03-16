@@ -49,7 +49,11 @@ app.post('/commands/starbot', (req, res) => {
   console.log(hours + ": Seoul")
 
   navigation.directions_test(function(err,result){
+      if(err){
+
+       }
        console.log(result)
+      
   })
 
   
