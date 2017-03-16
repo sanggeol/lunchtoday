@@ -25,7 +25,7 @@ exports.tmap_test = function(restaurants,resultcallback){
     //restaurants.location.longitude
     //restaurants.location.latitude
     //restaurants.restaurant_name
-    var endName = "restaurants"
+    var endName = "명궁"
    
     var endX = 127.064187
     var endY = 37.510214
