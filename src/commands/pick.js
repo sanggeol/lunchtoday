@@ -8,7 +8,7 @@ const trending = require('github-trending')
 
 const msgDefaults = {
   response_type: 'in_channel',
-  username: 'Starbot',
+  username: 'lunchtoday',
   icon_emoji: config('ICON_EMOJI')
 }
 
@@ -22,6 +22,7 @@ const handler = (payload, res) => {
         
           let attachments = [
           {
+              fallback: "Today\'s lunch spot is " + restaurant_picked.restaurant_name + ".",           
               title: 'today\'s lunch spot is...',
               color: '#2FA44F',
               text: restaurant_picked.restaurant_name,
