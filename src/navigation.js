@@ -14,7 +14,7 @@ var gmAPI = new GoogleMapsAPI(publicConfig);
 
 
 
-exports.test = function(){
+exports.test = function(resultcallback){
 	var geocodeParams = {
   	"address":    "121, Curtain Road, EC2A 3AD, London UK",
   	"components": "components=country:GB",
@@ -24,6 +24,19 @@ exports.test = function(){
 	}
 
  	gmAPI.geocode(geocodeParams, function(err, result){
-    console.log(result);
+    resultcallback(err,result)
 	})
+}
+
+exports.directions_test = function(resultcallback){
+ var params = {
+        origin: 'New York, NY, US',
+        destination: 'Los Angeles, CA, US',
+        mode: 'driving',
+        traffic_model: 'pessimistic'
+      }
+      gmAPI.directions( params, function(err, results) {
+    resultcallback(err,result)
+      })
+
 }
