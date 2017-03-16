@@ -31,7 +31,7 @@ exports.tmap_test = function(restaurants,resultcallback){
     var endY = 37.510214
     var urlStr = "https://apis.skplanetx.com/tmap/routes/pedestrian?version=1&format=json"
     
-    urlStr += "&reqCoordType=" + WGS84GEO
+    urlStr += "&reqCoordType=WGS84GEO"
     urlStr += "&startX="+startX
     urlStr += "&startY="+startY
     urlStr += "&endX="+endX
