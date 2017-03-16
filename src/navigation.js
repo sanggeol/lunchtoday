@@ -37,7 +37,7 @@ exports.tmap_test = function(restaurant,resultcallback){
     console.log(error)
     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
     var routes = JSON.parse(body)
-    console.log(routes)
+    console.log(routes.features[0])
 });
 
 }
