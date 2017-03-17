@@ -29,7 +29,7 @@ const handler = (payload, res) => {
   var restaurant_name = blocks[1]
   
   if(restaurant_name.length > 0){
-    var encoded_restaurants_name = encodeURIComponent(restaurants_name); 
+    var encoded_restaurants_name = encodeURIComponent(restaurant_name); 
     var originName = "KCTech"
     var originX = 127.064187 
     var originY = 37.509815
