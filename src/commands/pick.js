@@ -17,6 +17,13 @@ const handler = (payload, res) => {
     Restaurants.find({}).exec(function(err, result) {
       if (!err) {
           console.log(result.length + ' restaurants found in the list')
+        
+        //update weights
+          Restaurants.updateWeight(function (err, dogs) {
+            if (err) console.log(err);
+          }
+        
+        //calculate probability for each restaurant
           var softmax_probability_unnormalized = []
           var sum_of_softmax = 0
           var C1 = 0.1
@@ -33,6 +40,8 @@ const handler = (payload, res) => {
             softmax_probability.push(softmax_probability_unnormalized[i] / sum_of_softmax)
           }
           console.log('softmax probability ' + softmax_probability)
+        
+        //generate random number and pick a restaurant
           var random_number = Math.random()
           var accumulate_prob = 0
           var flag = 0
@@ -44,11 +53,11 @@ const handler = (payload, res) => {
               restaurant_picked_number = i
             }
           }
-        console.log('accumulate_prob = ' + accumulate_prob)
-        console.log('restaurant_picked_number = ' + restaurant_picked_number)
-//           var restaurant_picked_number = randomIntInc(0,result.length)
+          console.log('accumulate_prob = ' + accumulate_prob)
+          console.log('restaurant_picked_number = ' + restaurant_picked_number)
           var restaurant_picked = result[restaurant_picked_number]
         
+        //compose and send response 
           let attachments = [
           {
               fallback: "Today\'s lunch spot is " + restaurant_picked.restaurant_name + ".",           
