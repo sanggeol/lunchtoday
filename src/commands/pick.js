@@ -22,6 +22,7 @@ const handler = (payload, res) => {
           var C1 = 0.1
           for(var i=0; i<result.length; i++){
             var temp = Math.exp(C1 * result[i].weight)
+            console.log("i = " + i + ", weight = " + result[i].weight + ", C1*weight = " + C1*result[i].weight + ", exp(C1*weight) = " + temp)            
             softmax_probability_unnormalized.push(temp);
             sum_of_softmax += temp;
           }
