@@ -20,7 +20,7 @@ const handler = (payload, res) => {
           var softmax_probability_unnormalized = []
           var sum_of_softmax = 0
           var C1 = 0.1
-          for(i=0; i<result.length; i++){
+          for(var i=0; i<result.length; i++){
             var temp = Math.exp(Math.multiply(C1, result[i].weight))
             softmax_probability_unnormalized.push(temp);
             sum_of_softmax += temp;
