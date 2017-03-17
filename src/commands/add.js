@@ -25,11 +25,11 @@ const handler = (payload, res) => {
   // var blocks = text.split(" ")
   // var restaurant_name = blocks[1]
   
-  	
+  	console.log(payload)	
+
    	var text = payload.callback_id
 
-   	console.log(text)
-	var blocks = text.split("_")
+   	var blocks = text.split("_")
 
     let attachments = [
           {

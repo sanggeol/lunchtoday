@@ -36,9 +36,6 @@ app.post('/commands/action', (req, res) => {
     let payload = req.body
     //if 문으로 갈라야한다
 
-
-    console.log(payload)
-
     addCommand.handler(payload, res)
     // best practice to respond with 200 status
     // var message = {
