@@ -98,7 +98,7 @@ const handler = (payload, res) => {
           {
             title: 'Lunch Today!',
             color: '#2FA44F',
-            text: "restaurant name is empty"
+            text: "restaurant name is empty",
             mrkdwn_in: ['text']
           }]
 
