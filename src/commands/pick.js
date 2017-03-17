@@ -21,6 +21,7 @@ const handler = (payload, res) => {
           var sum_of_softmax = 0
           var C1 = 0.1
           for(var i=0; i<result.length; i++){
+            console.log(result[i])
             var temp = Math.exp(C1 * result[i].weight)
             console.log("i = " + i + ", weight = " + result[i].weight + ", C1*weight = " + C1*result[i].weight + ", exp(C1*weight) = " + temp)            
             softmax_probability_unnormalized.push(temp);
@@ -36,7 +37,7 @@ const handler = (payload, res) => {
           var accumulate_prob = 0
           var flag = 0
           var restaurant_picked_number = -1
-          for(i=0; i<result.length; i++){
+          for(var i=0; i<result.length; i++){
             accumulate_prob += softmax_probability
             if(flag == 0 && random_number < accumulate_prob){
               flag = 1
