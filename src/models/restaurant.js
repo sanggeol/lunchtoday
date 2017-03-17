@@ -35,5 +35,15 @@ restaurantSchema.plugin(findOrCreate);
 
 var Restaurants = mongoose.model("Restaurants", restaurantSchema);
 
+restaurantSchema.methods.updateWeight = function updateWeight(restaurant_id, cb){
+  var query = {'_id': restaurant_id}; 
+  this.model("Restaurants").findOneAndUpdate(query, {weight: 1}, {new: true}, function(err, cb){
+    if (err) console.log(err);
+    console.log("succesfully updated");
+  });  
+//   return this.model('Animal').find({ type: this.type }, cb);
+}
+
+
 // module.exports allows us to pass this to other files when it is called
 module.exports = Restaurants;
