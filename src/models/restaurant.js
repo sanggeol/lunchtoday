@@ -35,7 +35,7 @@ restaurantSchema.plugin(findOrCreate);
 
 var Restaurants = mongoose.model("Restaurants", restaurantSchema);
 
-restaurantSchema.methods.updateWeight = function updateWeight(restaurant_id, cb){
+restaurantSchema.statics.updateWeight = function updateWeight(restaurant_id, cb){
   var query = {'_id': restaurant_id}; 
   this.model("Restaurants").find({}).exec(function(err, result){
     if (err) console.log(err)
