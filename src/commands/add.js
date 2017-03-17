@@ -47,8 +47,7 @@ const handler = (payload, res) => {
 				    attachments: attachments
 				  }, msgDefaults)
 				  res.set('content-type', 'application/json')
-				  res.status(200).json(msg)
-			      }
+				  res.status(200).json(msg)			      
 
   	}
   })
