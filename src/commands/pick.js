@@ -21,36 +21,36 @@ const handler = (payload, res) => {
         //update weights
           Restaurants.updateWeight(function (err, dogs) {
             if (err) console.log(err);
-          })
-        
-        //calculate probability for each restaurant
-          var softmax_probability_unnormalized = []
-          var sum_of_softmax = 0
-          var C1 = 0.1
-          for(var i=0; i<result.length; i++){
-            var temp = Math.exp(C1 * result[i].weight)
-            console.log("i = " + i + ", weight = " + result[i].weight + ", C1*weight = " + C1*result[i].weight + ", exp(C1*weight) = " + temp)            
-            softmax_probability_unnormalized.push(temp);
-            sum_of_softmax += temp;
-          }
-          console.log('softmax unnormalized ' + softmax_probability_unnormalized)
-          console.log('sum_of_softmax = ' + sum_of_softmax)
-          var softmax_probability = []
-          for(i=0; i<result.length; i++){
-            softmax_probability.push(softmax_probability_unnormalized[i] / sum_of_softmax)
-          }
-          console.log('softmax probability ' + softmax_probability)
-        
-        //generate random number and pick a restaurant
-          var random_number = Math.random()
-          var accumulate_prob = 0
-          var flag = 0
-          var restaurant_picked_number = -1
-          for(var i=0; i<result.length; i++){
-            accumulate_prob += softmax_probability[i]
-            if(flag == 0 && random_number < accumulate_prob){
-              flag = 1
-              restaurant_picked_number = i
+            else{
+              
+            //calculate probability for each restaurant
+              var softmax_probability_unnormalized = []
+              var sum_of_softmax = 0
+              var C1 = 0.1
+              for(var i=0; i<result.length; i++){
+                var temp = Math.exp(C1 * result[i].weight)
+                console.log("i = " + i + ", weight = " + result[i].weight + ", C1*weight = " + C1*result[i].weight + ", exp(C1*weight) = " + temp)            
+                softmax_probability_unnormalized.push(temp);
+                sum_of_softmax += temp;
+              }
+              console.log('softmax unnormalized ' + softmax_probability_unnormalized)
+              console.log('sum_of_softmax = ' + sum_of_softmax)
+              var softmax_probability = []
+              for(i=0; i<result.length; i++){
+                softmax_probability.push(softmax_probability_unnormalized[i] / sum_of_softmax)
+              }
+              console.log('softmax probability ' + softmax_probability)
+
+            //generate random number and pick a restaurant
+              var random_number = Math.random()
+              var accumulate_prob = 0
+              var flag = 0
+              var restaurant_picked_number = -1
+              for(var i=0; i<result.length; i++){
+                accumulate_prob += softmax_probability[i]
+                if(flag == 0 && random_number < accumulate_prob){
+                  flag = 1
+                  restaurant_picked_number = i
             }
           }
           console.log('accumulate_prob = ' + accumulate_prob)
@@ -75,6 +75,9 @@ const handler = (payload, res) => {
           res.set('content-type', 'application/json')
           res.status(200).json(msg)
 
+            }
+          })
+        
       } else {
           console.log(err)
           res.send(500)
@@ -89,5 +92,6 @@ function randomIntInc (low, high) {
     return Math.floor(Math.random() * (high - low ) + low);
 }
 
+function 
 
 module.exports = { pattern: /pick/ig, handler: handler }
