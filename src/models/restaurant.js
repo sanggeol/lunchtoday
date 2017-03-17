@@ -34,17 +34,17 @@ var restaurantSchema = new mongoose.Schema({
   { timestamps: true }
 );
 
-restaurantSchema.statics.updateWeight = function updateWeight(restaurant_id, cb){
+restaurantSchema.statics.updateWeight = function updateWeight(cb){
   console.log('updateWeight called')
-  var query = {'_id': restaurant_id}; 
   this.model("Restaurants").find({}).exec(function(err, result){
     if (err) console.log(err)
     for(var i=0; i<result.length; i++){
-      result[i].update({weight: 0},{}, function(err, cb){
+      result[i].update({weight: -1},{}, function(err, cb){
         if (err) console.log(err)
       })
     }
   })
+  console.log('weights updated')
 //   this.model("Restaurants").findOneAndUpdate(query, {weight: 1}, {new: true}, function(err, cb){
 //     if (err) console.log(err);
 //     console.log("succesfully updated");
