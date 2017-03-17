@@ -31,7 +31,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.post('/commands/action', (req, res) => {
    
     console.log("aciton test")
-    res.status(200).end() 
 
     let payload = req.body
     //if 문으로 갈라야한다
