@@ -97,7 +97,7 @@ const handler = (payload, res) => {
                 attachment_type: "default",
                 actions: [
                 {
-                    name: restaurant_name + "_" + search_item.latitude + "_" + search_item.longitude,
+                    name: restaurant_name+ "_" + search_item.latitude + "_" + search_item.longitude,
                     text: "Yes",
                     type: "button",
                     value: "right"

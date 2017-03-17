@@ -14,7 +14,7 @@ var publicConfig = {
 };
 var gmAPI = new GoogleMapsAPI(publicConfig);
 
-exports.tmap_test = function(restaurants,resultcallback){
+exports.Get_distance = function(restaurant_info,resultcallback){
 
     //37.509815, 127.064187
     var startName = "KCTech"
@@ -25,10 +25,10 @@ exports.tmap_test = function(restaurants,resultcallback){
     //restaurants.location.longitude
     //restaurants.location.latitude
     //restaurants.restaurant_name
-    var endName = "명궁"
-   
-    var endX = 127.064187
-    var endY = 37.510214
+    var endName = restaurant_info[0]
+    var endY = restaurant_info[1]
+    var endX = restaurant_info[2]
+
     var urlStr = "https://apis.skplanetx.com/tmap/routes/pedestrian?version=1&format=json"
     
     urlStr += "&reqCoordType=WGS84GEO"

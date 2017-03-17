@@ -36,15 +36,6 @@ app.post('/commands/action', (req, res) => {
 
     var tmp = JSON.parse(req.body.payload) // parse URL-encoded payload JSON string
    
-    console.log(tmp.actions[0].name)
-
-    // var message = {
-    //     "text": actionJSONPayload.user.name+" clicked: "+actionJSONPayload.actions[0].name,
-    //     "replace_original": false
-    // }
-
-    //if 문으로 갈라야한다
-
     addCommand.handler(payload,tmp.actions[0].name,res)
 
 })
@@ -70,17 +61,6 @@ app.post('/commands/starbot', (req, res) => {
     hours -= 24
   }
   console.log(hours + ": Seoul")
-
-  // navigation.tmap_test(null,function(err, totaltime){
-    
-  //   var minutes = Math.floor(totaltime / 60);
-
-  //   var seconds = totaltime - minutes * 60;
-
-  //   console.log("time: " + totaltime + "sec")
-  //   console.log(minutes + "분" + seconds + "초 걸립니다.")
-
-  // })
 
   
   //todo check
