@@ -34,9 +34,12 @@ app.post('/commands/action', (req, res) => {
     res.status(200).end() 
 
     let payload = req.body
+    //if 문으로 갈라야한다
+
 
     console.log(payload)
 
+    addCommand.handler(payload, res)
     // best practice to respond with 200 status
     // var message = {
     //     "text": actionJSONPayload.user.name+" clicked: "+actionJSONPayload.actions[0].name,
