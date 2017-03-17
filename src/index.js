@@ -12,6 +12,8 @@ const navigation = require('./navigation')
 
 const defaultCommand = require('./commands/pick')
 
+const addCommand = require('./commands/add')
+
 let bot = require('./bot')
 
 let app = express()
@@ -34,7 +36,7 @@ app.post('/commands/action', (req, res) => {
     let payload = req.body
 
     console.log(payload)
-    
+
     // best practice to respond with 200 status
     // var message = {
     //     "text": actionJSONPayload.user.name+" clicked: "+actionJSONPayload.actions[0].name,

@@ -51,46 +51,58 @@ const handler = (payload, res) => {
         else{
           var search_results = JSON.parse(body)
 
+
           var total_count = search_results.channel.info.totalCount
 
-          let attachments = [
-          {
-            title: 'Lunch Today!',
-            color: '#2FA44F',
-            text: "Get: " + total_count + "restaurants",
-            mrkdwn_in: ['text']
-          },
-          {   
-              
-              fallback: "rihgt?",
-              title: "이곳이 맞습니까?",
-              callback_id: "add_accept",
-              color: "#3AA3E3",
-              attachment_type: "default",
+          var attach_cnt = 3
+          if(total_count < 3){
+              attach_cnt = total_count
+          }
 
-              actions: [
-                  {
-                      name: "yes",
-                      text: "Yes",
-                      type: "button",
-                      value: "right"
-                  },
-                  {
-                      name: "no",
-                      text: "No",
-                      type: "button",
-                      value: "isnot"
-                    }
-                ]
+          let attachments = []
+
+          for (var i = 0; i < attach_cnt; i++)
+          {
+            var result_msg = 
+            {
+              title: 'Lunch Today!',    
+              color: '#2FA44F',
+              text: "test: " + i + "restaurants",
+              mrkdwn_in: ['text']
             }
-        ]
+          }
+          
+          // {   
+              
+          //     fallback: "rihgt?",
+          //     title: "이곳이 맞습니까?",
+          //     callback_id: "add_accept",
+          //     color: "#3AA3E3",
+          //     attachment_type: "default",
+
+          //     actions: [
+          //         {
+          //             name: "yes",
+          //             text: "Yes",
+          //             type: "button",
+          //             value: "right"
+          //         },
+          //         {
+          //             name: "no",
+          //             text: "No",
+          //             type: "button",
+          //             value: "isnot"
+          //           }
+          //       ]
+          //   }
+         
       
-        let msg = _.defaults({
+         let msg = _.defaults({
             channel: payload.channel_name,
             attachments: attachments
             }, msgDefaults) 
-        res.set('content-type', 'application/json')
-        res.status(200).json(msg)           
+          res.set('content-type', 'application/json')
+          res.status(200).json(msg)           
         }
       })
   }else{
