@@ -26,6 +26,16 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
+app.post('/slack/actions', (req, res) => {
+   
+    console.log("aciton test")
+    res.status(200).end() // best practice to respond with 200 status
+    // var message = {
+    //     "text": actionJSONPayload.user.name+" clicked: "+actionJSONPayload.actions[0].name,
+    //     "replace_original": false
+    // }
+})
+
 app.post('/commands/starbot', (req, res) => {
   let payload = req.body
 
