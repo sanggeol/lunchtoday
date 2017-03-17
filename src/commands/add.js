@@ -36,18 +36,44 @@ const handler = (payload, res) => {
   		var total_count = search_results.channel.info.totalCount
 
   		let attachments = [
-				  {
-				    title: 'Lunch Today!',
-				    color: '#2FA44F',
-				    text: "Get: " + total_count + "restaurants",
-				    mrkdwn_in: ['text']
-				  }]
-				  let msg = _.defaults({
+			{
+				title: 'Lunch Today!',
+				color: '#2FA44F',
+				text: "Get: " + total_count + "restaurants",
+				mrkdwn_in: ['text']
+			},
+			{	 
+            	fallback: "Would you recommend it to customers?",
+           		title: "Would you recommend it to customers?",
+            	callback_id: "add_accept",
+            	color: "#3AA3E3",
+            	attachment_type: "default",
+            	actions: [
+                	{
+                    	name: "recommend",
+                    	text: "Recommend",
+                    	type: "button",
+                    	value: "recommend"
+                	},
+               	 	{
+                    	name: "no",
+                    	text: "No",
+                    	type: "button",
+                    	value: "bad"
+              	  	}
+                ]
+            }
+        ]
+			
+
+
+		let msg = _.defaults({
 				    channel: payload.channel_name,
 				    attachments: attachments
 				  }, msgDefaults)
-				  res.set('content-type', 'application/json')
-				  res.status(200).json(msg)			      
+		
+		res.set('content-type', 'application/json')
+		res.status(200).json(msg)			      
 
   	}
   })
