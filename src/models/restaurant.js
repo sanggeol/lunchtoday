@@ -43,10 +43,7 @@ restaurantSchema.statics.updateWeight = function updateWeight(cb){
 //         if (err) console.log(err)
 //       })
 //     }
-    result[0].update({weight: 3},{}, function(err, raw){
-      console.log('The raw response from Mongo was ', raw);
-      cb(err)
-    })
+    result[0].update({weight: 4},{}, cb)
 
   })
   console.log('weights updated')
