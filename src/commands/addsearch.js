@@ -87,7 +87,7 @@ const handler = (payload, res) => {
               title: search_item.title,    
               color: '#2FA44F',
               image_url: search_item.imageUrl,
-              text: search_item.newAddress + "\n"+"거리: " + search_item.distance + "m",
+              text: search_item.newAddress + "\n"+"거리: " + search_item.distance + "m\n" + "여기인가요?",
               mrkdwn_in: ['text'],
               fallback: "rihgt?",
               callback_id: "add_accept_" + i,
