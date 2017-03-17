@@ -49,70 +49,65 @@ const handler = (payload, res) => {
     res.set('content-type', 'application/json')
     res.status(200).json(msg)
 
-  // if(blocks[0]=="add"){    
-  //     if(blocks.length == 2 && blocks[0]=="add"){
-  //         console.log("ready to create restaurant" + restaurant_name)
-	 //  Restaurants.find({restaurant_name: restaurant_name}).exec(function(err, found) {	  
-	 //      if(err){
-		//   console.log(err)
-  //                 res.send(500)    
-	 //      }
-	 //      else{
-		//   if(found.length == 0){		  
-		//       create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
-		// 	      if(err){
-		// 		  console.log(err)
-		// 		  res.send(500)
-		// 	      }
-		// 	      else{
-		// 		  added_restaurant.save(function (err) {if (err) console.log ('Error on save!')});
-		// 		  console.log("restaurant " + restaurant_name + " saved.")
-		// 		  let attachments = [
-		// 		  {
-		// 		    title: 'Lunch Today!',
-		// 		    color: '#2FA44F',
-		// 		    text: "restaurant " + restaurant_name + " added",
-		// 		    mrkdwn_in: ['text']
-		// 		  }]
-		// 		  let msg = _.defaults({
-		// 		    channel: payload.channel_name,
-		// 		    attachments: attachments
-		// 		  }, msgDefaults)
-		// 		  res.set('content-type', 'application/json')
-		// 		  res.status(200).json(msg)
-		// 	      }
-		//   	})     			  			  
-	 //      	  }
-  //   	          else{
-		//   	  console.log('restaurant ' + restaurant_name + ' is already in the list')
-		// 	  let attachments = [
-		// 	  {
-		// 	    title: 'Lunch Today!',
-		// 	    color: '#2FA44F',
-		// 	    text: "restaurant " + restaurant_name + " is already in the list",
-		// 	    mrkdwn_in: ['text']
-		// 	  }]
-		// 	  let msg = _.defaults({
-		// 	    channel: payload.channel_name,
-		// 	    attachments: attachments
-		// 	  }, msgDefaults)
-		// 	  res.set('content-type', 'application/json')
-		// 	  res.status(200).json(msg)	      
-	 //          }
-	 //      }
-	 //  })	            
-  //     }
-  //     else if(blocks.length < 2){
-  //         console.log("restaurant name not supplied")
-  //         res.send("restaurant name is needed! See help")
-  //     }
-  // }
-  // else{
-  //     console.log("not an add command")
-  // }
+ //    console.log("ready to create restaurant" + restaurant_name)
 
+	// Restaurants.find({restaurant_name: restaurant_name}).exec(function(err, found) {	  
+	//       if(err){
+	// 	 	 console.log(err)
+ //            res.send(500)    
+	//       }
+	//       else{
+	// 		  if(found.length == 0){		  
+	// 		    create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
+	// 			    if(err)
+	// 			    {
+	// 					console.log(err)
+	// 				  	res.send(500)
+	// 		    	}
+	// 		      	else
+	// 		      	{
+	// 			  		added_restaurant.save(function (err) {if (err) console.log ('Error on save!')});
+	// 			  		console.log("restaurant " + restaurant_name + " saved.")
+				 
+	// 			  		let attachments = [
+	// 			 		{
+	// 			 		   title: 'Lunch Today!',
+	// 			    	   color: '#2FA44F',
+	// 			    	   text: "restaurant " + restaurant_name + " added",
+	// 			    	   mrkdwn_in: ['text']
+	// 			  		}
+	// 			  		]
 
-
+	// 			  		let msg = _.defaults({
+	// 			    		channel: payload.channel_name,
+	// 			    		attachments: attachments
+	// 			  		}, msgDefaults)
+				  
+	// 			  		res.set('content-type', 'application/json')
+	// 			  		res.status(200).json(msg)
+	// 		      }
+	// 	  		})     			  			  
+	//       	  }
+ //    	      else{
+	// 	  	  	console.log('restaurant ' + restaurant_name + ' is already in the list')
+	// 		  	let attachments = [
+	// 		  	{
+	// 		    title: 'Lunch Today!',
+	// 		    color: '#2FA44F',
+	// 		    text: "restaurant " + restaurant_name + " is already in the list",
+	// 		    mrkdwn_in: ['text']
+	// 		  	}]
+			  
+	// 		  	let msg = _.defaults({
+	// 		    channel: payload.channel_name,
+	// 		    attachments: attachments
+	// 		  	}, msgDefaults)
+			  
+	// 		  	res.set('content-type', 'application/json')
+	// 		  	res.status(200).json(msg)	      
+	//           }
+	//       }
+	//   })	            
   return
 }
 
