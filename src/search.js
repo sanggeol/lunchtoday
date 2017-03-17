@@ -16,6 +16,7 @@ exports.search_test = function(restaurants_name,resultcallback){
     urlStr += "&location=" + originY + "," + originX
     urlStr += "&radius=" + radius
 
+    console.log(urlStr)
     request(urlStr, function (err, response, body) {
       //using response
       resultcallback(err,body)
