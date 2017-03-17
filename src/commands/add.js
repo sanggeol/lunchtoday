@@ -13,7 +13,7 @@ const msgDefaults = {
   icon_emoji: config('ICON_EMOJI')
 }
 
-const handler = (payload, res) => {
+const handler = (payload,res_info,res) => {
   console.log("add handler initiated")
 
   var team_name = payload.team_domain
@@ -21,16 +21,9 @@ const handler = (payload, res) => {
   var user_name = payload.user_name
   var user_id = payload.user_id
 
-  // var text = payload.text
-  // var blocks = text.split(" ")
-  // var restaurant_name = blocks[1]
+  var blocks = res_info.split("_")
 
-  	console.log("why?")	
-  
-  	console.log(payload)	
-
-	console.log("text: "+payload.actions_name)	
-  	
+    console.log(blocks)
 
     let attachments = [
           {

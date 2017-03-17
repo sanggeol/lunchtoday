@@ -45,7 +45,7 @@ app.post('/commands/action', (req, res) => {
 
     //if 문으로 갈라야한다
 
-    addCommand.handler(payload, res)
+    addCommand.handler(payload,tmp.actions[0].name,res)
 
 })
 
