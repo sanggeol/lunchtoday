@@ -29,7 +29,13 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.post('/commands/action', (req, res) => {
    
     console.log("aciton test")
-    res.status(200).end() // best practice to respond with 200 status
+    res.status(200).end() 
+
+    let payload = req.body
+
+    console.log(payload)
+    
+    // best practice to respond with 200 status
     // var message = {
     //     "text": actionJSONPayload.user.name+" clicked: "+actionJSONPayload.actions[0].name,
     //     "replace_original": false
