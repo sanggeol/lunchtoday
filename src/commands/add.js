@@ -35,7 +35,20 @@ const handler = (payload, res) => {
 
   		var total_count = search_results.channel.info.totalCount
 
-  		console.log("search count: "+total_count)
+  		let attachments = [
+				  {
+				    title: 'Lunch Today!',
+				    color: '#2FA44F',
+				    text: "Get: " + total_count + "restaurants",
+				    mrkdwn_in: ['text']
+				  }]
+				  let msg = _.defaults({
+				    channel: payload.channel_name,
+				    attachments: attachments
+				  }, msgDefaults)
+				  res.set('content-type', 'application/json')
+				  res.status(200).json(msg)
+			      }
 
   	}
   })
