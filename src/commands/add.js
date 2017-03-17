@@ -9,7 +9,7 @@ const trending = require('github-trending')
 const msgDefaults = {
   response_type: 'in_channel',
   username: 'lunchtoday',
-  "replace_original": true,
+  replace_original: true,
   icon_emoji: config('ICON_EMOJI')
 }
 
@@ -29,12 +29,10 @@ const handler = (payload, res) => {
   
   	console.log(payload)	
 
-  	var body = JSON.parse(payload)
+  	console.log("text: "+payload.actions.name)	
 
-  	var text = body.callback_id
-
-  	console.log("text: "+text)	
-
+	console.log("text: "+payload.actions_name)	
+  	
 
     let attachments = [
           {
