@@ -45,7 +45,7 @@ restaurantSchema.statics.updateWeight = function updateWeight(cb){
 //     }
     result[0].update({weight: 2},{}, function(err, cb2){
       if(!err){ 
-//         cb(err)
+        cb(err)
       }
     })
 
