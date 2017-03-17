@@ -43,23 +43,23 @@ const handler = (payload, res) => {
 				mrkdwn_in: ['text']
 			},
 			{	 
-            	fallback: "Would you recommend it to customers?",
-           		title: "Would you recommend it to customers?",
+            	fallback: "rihgt?",
+           		title: "이곳이 맞습니까?",
             	callback_id: "add_accept",
             	color: "#3AA3E3",
             	attachment_type: "default",
             	actions: [
                 	{
-                    	name: "recommend",
-                    	text: "Recommend",
+                    	name: "yes",
+                    	text: "Yes",
                     	type: "button",
-                    	value: "recommend"
+                    	value: "right"
                 	},
                	 	{
                     	name: "no",
                     	text: "No",
                     	type: "button",
-                    	value: "bad"
+                    	value: "isnot"
               	  	}
                 ]
             }
