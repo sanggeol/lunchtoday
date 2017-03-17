@@ -30,16 +30,6 @@ var restaurantSchema = new mongoose.Schema({
   { timestamps: true }
 );
 
-// restaurantSchema.methods.updateWeight = function updateWeight (cb) {
-//   var query = {'_id':req._id};
-//   req.newData.username = req.user.username;
-//   MyModel.findOneAndUpdate(query, req.newData, {upsert:true}, function(err, doc){
-//     if (err) return res.send(500, { error: err });
-//     return res.send("succesfully saved");
-//   });
-  
-//   return this.model('Animal').find({ type: this.type }, cb);
-// };
 
 restaurantSchema.plugin(findOrCreate);
 
