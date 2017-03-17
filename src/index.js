@@ -50,23 +50,23 @@ app.post('/commands/starbot', (req, res) => {
   }
   console.log(hours + ": Seoul")
 
-  navigation.tmap_test(null,function(err, totaltime){
+  // navigation.tmap_test(null,function(err, totaltime){
     
-    var minutes = Math.floor(totaltime / 60);
+  //   var minutes = Math.floor(totaltime / 60);
 
-    var seconds = totaltime - minutes * 60;
+  //   var seconds = totaltime - minutes * 60;
 
-    console.log("time: " + totaltime + "sec")
-    console.log(minutes + "분" + seconds + "초 걸립니다.")
+  //   console.log("time: " + totaltime + "sec")
+  //   console.log(minutes + "분" + seconds + "초 걸립니다.")
 
-  })
+  // })
 
   search.search_test("명궁",function(err,result){
     if(err){
-      console.log(err)
+      console.log("err" + err)
     }else{
       var results = JSON.parse(result)
-      console.log(results)
+      console.log("search result: "+ results)
     }
   })
 
