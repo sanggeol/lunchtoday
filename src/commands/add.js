@@ -4,7 +4,6 @@ var Restaurants      = require('../models/restaurant')
 
 const _ = require('lodash')
 const config = require('../config')
-const search = require('../search')
 const trending = require('github-trending')
 
 const msgDefaults = {
@@ -25,122 +24,68 @@ const handler = (payload, res) => {
   var blocks = text.split(" ")
   var restaurant_name = blocks[1]
   
-  search.search_restaurants(restaurant_name,function(err, results){
-  	if(err){
-  		console.log(err)
-  		res.send(500)
-  	}else{
-
-  		var search_results = JSON.parse(results)
-
-  		var total_count = search_results.channel.info.totalCount
-
-  		let attachments = [
-			{
-				title: 'Lunch Today!',
-				color: '#2FA44F',
-				text: "Get: " + total_count + "restaurants",
-				mrkdwn_in: ['text']
-			},
-			{	 
-            	fallback: "rihgt?",
-           		title: "이곳이 맞습니까?",
-            	callback_id: "add_accept",
-            	color: "#3AA3E3",
-            	attachment_type: "default",
-            	actions: [
-                	{
-                    	name: "yes",
-                    	text: "Yes",
-                    	type: "button",
-                    	value: "right"
-                	},
-               	 	{
-                    	name: "no",
-                    	text: "No",
-                    	type: "button",
-                    	value: "isnot"
-              	  	}
-                ]
-            }
-        ]
-			
-
-
-		let msg = _.defaults({
+  
+  if(blocks[0]=="add"){    
+      if(blocks.length == 2 && blocks[0]=="add"){
+          console.log("ready to create restaurant" + restaurant_name)
+	  Restaurants.find({restaurant_name: restaurant_name}).exec(function(err, found) {	  
+	      if(err){
+		  console.log(err)
+                  res.send(500)    
+	      }
+	      else{
+		  if(found.length == 0){		  
+		      create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
+			      if(err){
+				  console.log(err)
+				  res.send(500)
+			      }
+			      else{
+				  added_restaurant.save(function (err) {if (err) console.log ('Error on save!')});
+				  console.log("restaurant " + restaurant_name + " saved.")
+				  let attachments = [
+				  {
+				    title: 'Lunch Today!',
+				    color: '#2FA44F',
+				    text: "restaurant " + restaurant_name + " added",
+				    mrkdwn_in: ['text']
+				  }]
+				  let msg = _.defaults({
 				    channel: payload.channel_name,
 				    attachments: attachments
 				  }, msgDefaults)
-		
-		res.set('content-type', 'application/json')
-		res.status(200).json(msg)			      
-
-  	}
-  })
-
-
-
-  // if(blocks[0]=="add"){    
-  //     if(blocks.length == 2 && blocks[0]=="add"){
-  //         console.log("ready to create restaurant" + restaurant_name)
-	 //  Restaurants.find({restaurant_name: restaurant_name}).exec(function(err, found) {	  
-	 //      if(err){
-		//   console.log(err)
-  //                 res.send(500)    
-	 //      }
-	 //      else{
-		//   if(found.length == 0){		  
-		//       create_restaurant(user_name, user_id, team_name, team_id, restaurant_name, function(err,added_restaurant){
-		// 	      if(err){
-		// 		  console.log(err)
-		// 		  res.send(500)
-		// 	      }
-		// 	      else{
-		// 		  added_restaurant.save(function (err) {if (err) console.log ('Error on save!')});
-		// 		  console.log("restaurant " + restaurant_name + " saved.")
-		// 		  let attachments = [
-		// 		  {
-		// 		    title: 'Lunch Today!',
-		// 		    color: '#2FA44F',
-		// 		    text: "restaurant " + restaurant_name + " added",
-		// 		    mrkdwn_in: ['text']
-		// 		  }]
-		// 		  let msg = _.defaults({
-		// 		    channel: payload.channel_name,
-		// 		    attachments: attachments
-		// 		  }, msgDefaults)
-		// 		  res.set('content-type', 'application/json')
-		// 		  res.status(200).json(msg)
-		// 	      }
-		//   	})     			  			  
-	 //      	  }
-  //   	          else{
-		//   	  console.log('restaurant ' + restaurant_name + ' is already in the list')
-		// 	  let attachments = [
-		// 	  {
-		// 	    title: 'Lunch Today!',
-		// 	    color: '#2FA44F',
-		// 	    text: "restaurant " + restaurant_name + " is already in the list",
-		// 	    mrkdwn_in: ['text']
-		// 	  }]
-		// 	  let msg = _.defaults({
-		// 	    channel: payload.channel_name,
-		// 	    attachments: attachments
-		// 	  }, msgDefaults)
-		// 	  res.set('content-type', 'application/json')
-		// 	  res.status(200).json(msg)	      
-	 //          }
-	 //      }
-	 //  })	            
-  //     }
-  //     else if(blocks.length < 2){
-  //         console.log("restaurant name not supplied")
-  //         res.send("restaurant name is needed! See help")
-  //     }
-  // }
-  // else{
-  //     console.log("not an add command")
-  // }
+				  res.set('content-type', 'application/json')
+				  res.status(200).json(msg)
+			      }
+		  	})     			  			  
+	      	  }
+    	          else{
+		  	  console.log('restaurant ' + restaurant_name + ' is already in the list')
+			  let attachments = [
+			  {
+			    title: 'Lunch Today!',
+			    color: '#2FA44F',
+			    text: "restaurant " + restaurant_name + " is already in the list",
+			    mrkdwn_in: ['text']
+			  }]
+			  let msg = _.defaults({
+			    channel: payload.channel_name,
+			    attachments: attachments
+			  }, msgDefaults)
+			  res.set('content-type', 'application/json')
+			  res.status(200).json(msg)	      
+	          }
+	      }
+	  })	            
+      }
+      else if(blocks.length < 2){
+          console.log("restaurant name not supplied")
+          res.send("restaurant name is needed! See help")
+      }
+  }
+  else{
+      console.log("not an add command")
+  }
 
 
 
@@ -163,5 +108,5 @@ var create_restaurant = function(user_name, user_id, team_name, team_id, restaur
 	})
 }
 
-module.exports = { pattern: /add/ig, handler: handler }
+module.exports = { pattern: /create/ig, handler: handler }
 
