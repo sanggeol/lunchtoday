@@ -26,10 +26,11 @@ const handler = (payload, res) => {
   // var restaurant_name = blocks[1]
   
   	
-   	var callback_id = payload.callback_id
+   	var text = payload.callback_id
 
-	var blocks = callback_id.split("_")
-	
+   	console.log(text)
+	var blocks = text.split("_")
+
     let attachments = [
           {
             title: 'Lunch Today!',
