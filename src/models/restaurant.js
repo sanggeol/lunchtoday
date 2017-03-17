@@ -25,6 +25,10 @@ var restaurantSchema = new mongoose.Schema({
       longitude: {type: Number, default: -1},
       latitude: {type: Number, default: -1}
     },
+    distance: {
+      registered: {type: Boolean, default: false},
+      min: {type: Number, default: -1}
+    },
     status: {type: String, default: 'listed'}
   },
   { timestamps: true }
@@ -36,7 +40,7 @@ restaurantSchema.statics.updateWeight = function updateWeight(restaurant_id, cb)
   this.model("Restaurants").find({}).exec(function(err, result){
     if (err) console.log(err)
     for(var i=0; i<result.length; i++){
-      result[i].update({weight: 1},{}, function(err, cb){
+      result[i].update({weight: 0},{}, function(err, cb){
         if (err) console.log(err)
       })
     }
