@@ -45,7 +45,7 @@ const handler = (payload, res) => {
             }
           }
         console.log('accumulate_prob = ' + accumulate_prob)
-        console.log('restaurant_picked_number = ' + i)
+        console.log('restaurant_picked_number = ' + restaurant_picked_number)
 //           var restaurant_picked_number = randomIntInc(0,result.length)
           var restaurant_picked = result[restaurant_picked_number]
         
