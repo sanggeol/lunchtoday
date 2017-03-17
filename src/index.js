@@ -9,8 +9,6 @@ const config = require('./config')
 const commands = require('./commands')
 
 const navigation = require('./navigation')
-const search = require('./search')
-
 
 const defaultCommand = require('./commands/pick')
 
@@ -60,19 +58,6 @@ app.post('/commands/starbot', (req, res) => {
   //   console.log(minutes + "분" + seconds + "초 걸립니다.")
 
   // })
-
-  search.search_test("명궁",function(err,result){
-    if(err){
-      console.log("err" + err)
-    }else{
-      console.log("search result json: "+ result)   
-      
-      var results = JSON.parse(result)
-      
-      console.log("search result: "+ results)
-    }
-  })
-
 
   
   //todo check

@@ -3,7 +3,7 @@
 
 var request = require('request');
 
-exports.search_test = function(restaurants_name,resultcallback){
+exports.search_restaurants = function(restaurants_name,resultcallback){
  
 
    var encoded_restaurants_name = encodeURIComponent(restaurants_name); 
@@ -20,11 +20,7 @@ exports.search_test = function(restaurants_name,resultcallback){
 
     console.log(urlStr)
     request(urlStr, function (err, response, body) {
-      //using response
-      console.log('error:', err); // Print the error if one occurred 
-      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
-      console.log('body:', body); // Print the HTML for the Google homepage. 
-      
+      //using response    
       resultcallback(err,body)
     })
 
