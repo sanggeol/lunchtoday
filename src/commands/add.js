@@ -8,7 +8,7 @@ const search = require('../search')
 const trending = require('github-trending')
 
 const msgDefaults = {
-  response_type: 'in_channel',
+  response_type: 'ephemeral',
   username: 'lunchtoday',
   icon_emoji: config('ICON_EMOJI')
 }
