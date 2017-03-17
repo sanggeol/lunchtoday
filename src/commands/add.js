@@ -24,18 +24,20 @@ const handler = (payload, res) => {
   // var text = payload.text
   // var blocks = text.split(" ")
   // var restaurant_name = blocks[1]
+
+  	console.log("why?")	
   
   	console.log(payload)	
 
-   	var text = payload.callback_id
+//   	var text = payload.callback_id
 
-   	var blocks = text.split("_")
+  // 	var blocks = text.split("_")
 
     let attachments = [
           {
             title: 'Lunch Today!',
             color: '#2FA44F',
-            text: "restaurant " + blocks[2],
+            text: "restaurant " ,
             mrkdwn_in: ['text']
           }]
 
