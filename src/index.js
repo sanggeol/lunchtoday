@@ -65,7 +65,10 @@ app.post('/commands/starbot', (req, res) => {
     if(err){
       console.log("err" + err)
     }else{
+      console.log("search result json: "+ result)   
+      
       var results = JSON.parse(result)
+      
       console.log("search result: "+ results)
     }
   })
