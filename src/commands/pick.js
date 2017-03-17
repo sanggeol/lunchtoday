@@ -92,6 +92,6 @@ function randomIntInc (low, high) {
     return Math.floor(Math.random() * (high - low ) + low);
 }
 
-function 
+
 
 module.exports = { pattern: /pick/ig, handler: handler }
