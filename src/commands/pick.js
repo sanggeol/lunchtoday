@@ -28,7 +28,7 @@ const handler = (payload, res) => {
           console.log('softmax unnormalized ' + softmax_probability_unnormalized)
           var softmax_probability = []
           for(i=0; i<result.length; i++){
-            softmax_probability.push(math.divide(softmax_probability_unnormalized, sum_of_softmax))
+            softmax_probability.push(Math.divide(softmax_probability_unnormalized, sum_of_softmax))
           }
           console.log('softmax probability ' + softmax_probability)
           var random_number = Math.random()
