@@ -54,48 +54,50 @@ const handler = (payload, res) => {
 
           var total_count = search_results.channel.info.totalCount
 
-          var attach_cnt = 3
-          if(total_count < 3){
-              attach_cnt = total_count
-          }
+          if(total_count == 0){
+              let attachments = [
+              {
+                title: 'Lunch Today!',
+                color: '#2FA44F',
+                text: "restaurant name is empty",
+                mrkdwn_in: ['text']
+               }]
+          
+              let msg = _.defaults({
+                  channel: payload.channel_name,
+                  attachments: attachments
+                  }, msgDefaults)
+            
+            res.set('content-type', 'application/json')
+            res.status(200).json(msg)
+          }else{   
+            var attach_cnt = 3
+            
+            if(total_count < 3){
+                attach_cnt = total_count
+            }
 
-          let attachments = []
+            let attachments = []
 
-          /*
-          "fields": [
-                {
-                    "title": "Volume",
-                    "value": "1",
-                    "short": true
-                },
-                {
-                    "title": "Issue",
-                    "value": "3",
-            "short": true
-                }
-            ],
-            "author_name": "Stanford S. Strickland",
-            "author_icon": "http://a.slack-edge.com/7f18https://a.slack-edge.com/bfaba/img/api/homepage_custom_integrations-2x.png",
-            "image_url": "http://i.imgur.com/OJkaVOI.jpg?1"
-          */
-          for (var i = 0; i < attach_cnt; i++)
-          {
-            var search_item = search_results.channel.item[i]
-
-            var result_msg = 
+            for (var i = 0; i < attach_cnt; i++)
             {
-              title: search_item.title,    
-              color: '#2FA44F',
-              image_url: search_item.imageUrl,
-              text: search_item.newAddress + "\n"+"거리: " + search_item.distance + "m\n" + "여기인가요?",
-              mrkdwn_in: ['text'],
-              fallback: "rihgt?",
-              callback_id: "add_accept_" + i,
-              color: "#3AA3E3",
-              attachment_type: "default",
-              actions: [
+              var search_item = search_results.channel.item[i]
+
+              var result_msg = 
+              {
+                title: search_item.title, 
+                title_link: search_item.placeUrl,  
+                color: '#2FA44F',
+                image_url: search_item.imageUrl,
+                text: search_item.newAddress + "\n"+"거리: " + search_item.distance + "m\n" + "여기인가요?",
+                mrkdwn_in: ['text'],
+                fallback: "rihgt?",
+                callback_id: "add_accept_" + i,
+                color: "#3AA3E3",
+                attachment_type: "default",
+                actions: [
                 {
-                    name: "yes",
+                    name: restaurant_name + "_" + search_item.latitude + "_" + search_item.longitude,
                     text: "Yes",
                     type: "button",
                     value: "right"
@@ -106,9 +108,8 @@ const handler = (payload, res) => {
                     type: "button",
                     value: "isnot"
                 }
-              ]
+                ]
             }
-
             attachments.push(result_msg)
           }
               
@@ -117,7 +118,9 @@ const handler = (payload, res) => {
             attachments: attachments
             }, msgDefaults) 
           res.set('content-type', 'application/json')
-          res.status(200).json(msg)           
+          res.status(200).json(msg)         
+
+          }  
         }
       })
   }else{
