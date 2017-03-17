@@ -70,6 +70,7 @@ const handler = (payload, res) => {
               text: "test: " + i + "restaurants",
               mrkdwn_in: ['text']
             }
+            attachments.push(result_msg)
           }
           
           // {   
