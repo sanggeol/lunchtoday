@@ -33,7 +33,7 @@ const handler = (payload, res) => {
 
   		var search_results = JSON.parse(results)
 
-  		var total_count = channel.info.total_count
+  		var total_count = search_results.channel.info.totalCount
 
   		console.log("search count: "+total_count)
 
