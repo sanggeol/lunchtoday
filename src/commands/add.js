@@ -29,9 +29,12 @@ const handler = (payload, res) => {
   
   	console.log(payload)	
 
-//   	var text = payload.callback_id
+  	var text = payload.callback_id
 
-  // 	var blocks = text.split("_")
+  	console.log("text: "+text)	
+
+
+//  	var blocks = text.split("_")
 
     let attachments = [
           {
