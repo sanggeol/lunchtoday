@@ -26,7 +26,7 @@ app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
 
-app.post('/slack/actions', (req, res) => {
+app.post('/commands/action', (req, res) => {
    
     console.log("aciton test")
     res.status(200).end() // best practice to respond with 200 status
