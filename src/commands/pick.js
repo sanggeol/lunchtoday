@@ -14,7 +14,7 @@ const msgDefaults = {
 
 const handler = (payload, res) => {
     console.log('pick handler initiated')
-    Restaurants.find({}).select('restaurant_name -_id').exec(function(err, result) {
+    Restaurants.find({}).exec(function(err, result) {
       if (!err) {
           console.log(result.length + ' restaurants found in the list')
           var softmax_probability_unnormalized = []
