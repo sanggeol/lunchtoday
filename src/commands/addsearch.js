@@ -92,12 +92,12 @@ const handler = (payload, res) => {
                 text: search_item.newAddress + "\n"+"거리: " + search_item.distance + "m\n" + "여기인가요?",
                 mrkdwn_in: ['text'],
                 fallback: "rihgt?",
-                callback_id: "add_accept_" + i,
+                callback_id: restaurant_name + "_" + search_item.latitude + "_" + search_item.longitude,
                 color: "#3AA3E3",
                 attachment_type: "default",
                 actions: [
                 {
-                    name: restaurant_name + "_" + search_item.latitude + "_" + search_item.longitude,
+                    name: "yes",
                     text: "Yes",
                     type: "button",
                     value: "right"

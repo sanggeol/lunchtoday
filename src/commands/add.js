@@ -34,8 +34,6 @@ const handler = (payload, res) => {
   	console.log("text: "+text)	
 
 
-//  	var blocks = text.split("_")
-
     let attachments = [
           {
             title: 'Lunch Today!',
