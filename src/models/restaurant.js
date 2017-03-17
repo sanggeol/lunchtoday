@@ -39,7 +39,7 @@ restaurantSchema.statics.updateWeight = function updateWeight(cb){
   this.model("Restaurants").find({}).exec(function(err, result){
     if (err) console.log(err)
     for(var i=0; i<result.length; i++){
-      result[i].update({weight: -1},{}, function(err, cb){
+      result[i].update({weight: 0},{}, function(err, cb){
         if (err) console.log(err)
       })
     }
