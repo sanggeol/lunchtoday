@@ -29,7 +29,9 @@ const handler = (payload, res) => {
   
   	console.log(payload)	
 
-  	var text = payload.callback_id
+  	var body = JSON.parse(payload)
+
+  	var text = body.callback_id
 
   	console.log("text: "+text)	
 
