@@ -19,7 +19,7 @@ exports.search_test = function(restaurants_name,resultcallback){
     console.log(urlStr)
     request(urlStr, function (err, response, body) {
       //using response
-      console.log('error:', error); // Print the error if one occurred 
+      console.log('error:', err); // Print the error if one occurred 
       console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received 
       console.log('body:', body); // Print the HTML for the Google homepage. 
       
