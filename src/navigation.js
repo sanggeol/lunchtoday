@@ -25,7 +25,7 @@ exports.Get_distance = function(restaurant_info,resultcallback){
     //restaurants.location.longitude
     //restaurants.location.latitude
     //restaurants.restaurant_name
-    var endName = restaurant_info[0]
+    var endName = "temp"
     var endY = restaurant_info[1]
     var endX = restaurant_info[2]
 
@@ -47,6 +47,7 @@ exports.Get_distance = function(restaurant_info,resultcallback){
         console.log("error: " + err)
         totaltime = -1
       }else{
+        console.log(body)
          var routes = JSON.parse(body)
          totaltime = routes.features[0].properties.totalTime
       }
