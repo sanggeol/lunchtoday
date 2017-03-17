@@ -38,7 +38,6 @@ restaurantSchema.statics.updateWeight = function updateWeight(restaurant_id, cb)
     for(var i=0; i<result.length; i++){
       result[i].update({weight: 1},{}, function(err, cb){
         if (err) console.log(err)
-        else console.log('weight = ' + result[i].weight)
       })
     }
   })
