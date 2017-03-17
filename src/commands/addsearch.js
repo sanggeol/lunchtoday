@@ -46,10 +46,10 @@ const handler = (payload, res) => {
       //using response    
        if(err){
           console.log(err)
-         res.send(500)
+          res.send(500)
         }
         else{
-          var search_results = JSON.parse(results)
+          var search_results = JSON.parse(body)
 
           var total_count = search_results.channel.info.totalCount
 
