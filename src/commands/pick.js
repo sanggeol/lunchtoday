@@ -21,16 +21,16 @@ const handler = (payload, res) => {
           var sum_of_softmax = 0
           var C1 = 0.1
           for(var i=0; i<result.length; i++){
-            console.log(result[i])
             var temp = Math.exp(C1 * result[i].weight)
             console.log("i = " + i + ", weight = " + result[i].weight + ", C1*weight = " + C1*result[i].weight + ", exp(C1*weight) = " + temp)            
             softmax_probability_unnormalized.push(temp);
             sum_of_softmax += temp;
           }
           console.log('softmax unnormalized ' + softmax_probability_unnormalized)
+          console.log('sum_of_softmax')
           var softmax_probability = []
           for(i=0; i<result.length; i++){
-            softmax_probability.push(softmax_probability_unnormalized / sum_of_softmax)
+            softmax_probability.push(softmax_probability_unnormalized[i] / sum_of_softmax)
           }
           console.log('softmax probability ' + softmax_probability)
           var random_number = Math.random()
