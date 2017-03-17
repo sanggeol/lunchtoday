@@ -61,13 +61,33 @@ const handler = (payload, res) => {
 
           let attachments = []
 
+          /*
+          "fields": [
+                {
+                    "title": "Volume",
+                    "value": "1",
+                    "short": true
+                },
+                {
+                    "title": "Issue",
+                    "value": "3",
+            "short": true
+                }
+            ],
+            "author_name": "Stanford S. Strickland",
+            "author_icon": "http://a.slack-edge.com/7f18https://a.slack-edge.com/bfaba/img/api/homepage_custom_integrations-2x.png",
+            "image_url": "http://i.imgur.com/OJkaVOI.jpg?1"
+          */
           for (var i = 0; i < attach_cnt; i++)
           {
+            var search_item = search_results.channel.item[i]
+
             var result_msg = 
             {
-              title: 'Lunch Today!',    
+              title: search_item.title,    
               color: '#2FA44F',
-              text: "test: " + i + "restaurants",
+              image_url: search_item.imageUrl,
+              text: "거리: " + search_item.distance + "m",
               mrkdwn_in: ['text'],
               fallback: "rihgt?",
               title: "이곳이 맞습니까?",
@@ -89,34 +109,10 @@ const handler = (payload, res) => {
                 }
               ]
             }
+
             attachments.push(result_msg)
           }
-          
-          // {   
               
-          //     fallback: "rihgt?",
-          //     title: "이곳이 맞습니까?",
-          //     callback_id: "add_accept",
-          //     color: "#3AA3E3",
-          //     attachment_type: "default",
-
-          //     actions: [
-          //         {
-          //             name: "yes",
-          //             text: "Yes",
-          //             type: "button",
-          //             value: "right"
-          //         },
-          //         {
-          //             name: "no",
-          //             text: "No",
-          //             type: "button",
-          //             value: "isnot"
-          //           }
-          //       ]
-          //   }
-         
-      
          let msg = _.defaults({
             channel: payload.channel_name,
             attachments: attachments
