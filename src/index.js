@@ -61,7 +61,7 @@ app.post('/commands/starbot', (req, res) => {
 
   // })
 
-  search.search_test("명궁",function(err,result){
+  search.search_test("gs25",function(err,result){
     if(err){
       console.log("err" + err)
     }else{
