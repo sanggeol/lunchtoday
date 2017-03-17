@@ -68,7 +68,26 @@ const handler = (payload, res) => {
               title: 'Lunch Today!',    
               color: '#2FA44F',
               text: "test: " + i + "restaurants",
-              mrkdwn_in: ['text']
+              mrkdwn_in: ['text'],
+              fallback: "rihgt?",
+              title: "이곳이 맞습니까?",
+              callback_id: "add_accept_" + i,
+              color: "#3AA3E3",
+              attachment_type: "default",
+              actions: [
+                {
+                    name: "yes",
+                    text: "Yes",
+                    type: "button",
+                    value: "right"
+                },
+                {
+                    name: "no",
+                    text: "No",
+                    type: "button",
+                    value: "isnot"
+                }
+              ]
             }
             attachments.push(result_msg)
           }
