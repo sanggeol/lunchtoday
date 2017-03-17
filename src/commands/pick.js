@@ -51,29 +51,29 @@ const handler = (payload, res) => {
                 if(flag == 0 && random_number < accumulate_prob){
                   flag = 1
                   restaurant_picked_number = i
-            }
-          }
-          console.log('accumulate_prob = ' + accumulate_prob)
-          console.log('restaurant_picked_number = ' + restaurant_picked_number)
-          var restaurant_picked = result[restaurant_picked_number]
+                }
+              }
+              console.log('accumulate_prob = ' + accumulate_prob)
+              console.log('restaurant_picked_number = ' + restaurant_picked_number)
+              var restaurant_picked = result[restaurant_picked_number]
         
-        //compose and send response 
-          let attachments = [
-          {
-              fallback: "Today\'s lunch spot is " + restaurant_picked.restaurant_name + ".",           
-              title: 'today\'s lunch spot is...',
-              color: '#2FA44F',
-              text: restaurant_picked.restaurant_name,
-              mrkdwn_in: ['text']
-          },
-          ]
-          console.log('herehere')
-          let msg = _.defaults({
-              channel: payload.channel_name,
-              attachments: attachments
-          }, msgDefaults)
-          res.set('content-type', 'application/json')
-          res.status(200).json(msg)
+            //compose and send response 
+              let attachments = [
+              {
+                  fallback: "Today\'s lunch spot is " + restaurant_picked.restaurant_name + ".",           
+                  title: 'today\'s lunch spot is...',
+                  color: '#2FA44F',
+                  text: restaurant_picked.restaurant_name,
+                  mrkdwn_in: ['text']
+              }
+              ]
+              console.log('herehere')
+              let msg = _.defaults({
+                  channel: payload.channel_name,
+                  attachments: attachments
+              }, msgDefaults)
+              res.set('content-type', 'application/json')
+              res.status(200).json(msg)
 
             }
           })
