@@ -19,7 +19,7 @@ const handler = (payload, res) => {
           console.log(result.length + ' restaurants found in the list')
         
         //update weights
-          Restaurants.updateWeight(function (err) {
+          Restaurants.updateWeight(function (err,raw) {
             if (err) console.log(err);
             else{
               
