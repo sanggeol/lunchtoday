@@ -30,11 +30,6 @@ var restaurantSchema = new mongoose.Schema({
   { timestamps: true }
 );
 
-
-restaurantSchema.plugin(findOrCreate);
-
-var Restaurants = mongoose.model("Restaurants", restaurantSchema);
-
 restaurantSchema.statics.updateWeight = function updateWeight(restaurant_id, cb){
   var query = {'_id': restaurant_id}; 
   this.model("Restaurants").find({}).exec(function(err, result){
@@ -51,6 +46,12 @@ restaurantSchema.statics.updateWeight = function updateWeight(restaurant_id, cb)
 //   });  
 //   return this.model('Animal').find({ type: this.type }, cb);
 }
+
+restaurantSchema.plugin(findOrCreate);
+
+var Restaurants = mongoose.model("Restaurants", restaurantSchema);
+
+
 
 
 // module.exports allows us to pass this to other files when it is called
