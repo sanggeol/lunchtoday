@@ -21,7 +21,7 @@ const handler = (payload, res) => {
         //update weights
           Restaurants.updateWeight(function (err, dogs) {
             if (err) console.log(err);
-          }
+          })
         
         //calculate probability for each restaurant
           var softmax_probability_unnormalized = []
