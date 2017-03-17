@@ -29,8 +29,6 @@ const handler = (payload, res) => {
   
   	console.log(payload)	
 
-  	console.log("text: "+payload.actions.name)	
-
 	console.log("text: "+payload.actions_name)	
   	
 
