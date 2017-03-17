@@ -33,14 +33,20 @@ app.post('/commands/action', (req, res) => {
     console.log("aciton test")
 
     let payload = req.body
-    //if 문으로 갈라야한다
 
-    addCommand.handler(payload, res)
-    // best practice to respond with 200 status
+    var tmp = JSON.parse(req.body.payload) // parse URL-encoded payload JSON string
+   
+    console.log(tmp.actions[0].name)
+
     // var message = {
     //     "text": actionJSONPayload.user.name+" clicked: "+actionJSONPayload.actions[0].name,
     //     "replace_original": false
     // }
+
+    //if 문으로 갈라야한다
+
+    addCommand.handler(payload, res)
+
 })
 
 app.post('/commands/starbot', (req, res) => {
