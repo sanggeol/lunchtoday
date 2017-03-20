@@ -23,11 +23,12 @@ const handler = (payload, res) => {
   var text = payload.text
   var blocks = text.split(" ")
 
-  var restaurant_name = blocks[1]
+  var restaurant_name = text.replace("remove","")
   
   console.log("restaurant name is " + restaurant_name)
   
   if(blocks[0]=="remove" && blocks.length > 1 ){    
+
 
     Restaurants.remove({restaurant_name: restaurant_name},
       function(err, removed) {

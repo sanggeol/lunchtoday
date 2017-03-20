@@ -54,6 +54,8 @@ exports.Get_distance = function(restaurant_info,resultcallback){
 
     })
 }
+
+
 var params = {
   center: '37.509815,127.064187',
   zoom: 15,
