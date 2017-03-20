@@ -60,6 +60,7 @@ const handler = (payload, res) => {
             //compose and send response 
               let attachments = [
               {
+                 color: '#2FA44F',
                  image_url: restaurant_picked.image
               },
               {
