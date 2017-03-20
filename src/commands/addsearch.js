@@ -127,7 +127,7 @@ const handler = (payload, res) => {
              ]
             }
 
-            var staticmap_url = gmAPI.staticMap(params) // return static map URL 
+            var staticmap_url = gmAPI.staticMap(map_param) // return static map URL 
             console.log(staticmap_url)
 
             //ok
