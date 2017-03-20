@@ -153,7 +153,7 @@ var create_restaurant = function(user_name, user_id, team_name, team_id, restaur
              	  	},
              	  distance: {
              	  	registered: true,
-             	  	min : totaltime
+             	  	seconds : totaltime
              	  	}
 				  }, function(err,added_restaurant){
 	    		 	if(err){
