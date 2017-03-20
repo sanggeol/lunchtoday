@@ -43,9 +43,7 @@ restaurantSchema.statics.updateWeight = function updateWeight(cb){
     var newWeight = 0
     for(var i=0; i<result.length; i++){
       newWeight = (300 - result[i].distance.seconds) / 60
-      result[i].update({weight: newWeight},{}, function(err, cb){
-        cb(err)
-      })
+      result[i].update({weight: newWeight},{}, cb)
     }
 
   })
