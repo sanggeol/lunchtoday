@@ -21,7 +21,7 @@ const handler = (payload, res) => {
           for(var i = 0; i < result.length; i++) {
 //             rest_list += JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n'     
 //             if(result[i].distance.registered){
-              console.log(result[i].distance.min + '초')
+              console.log(result[i])
               console.log(result[i].distance.min/60 + '분')
               rest_list += result[i].restaurant_name + '   ' + Math.round(result[i].distance.min/60) + '분\n'
 //             }else{
