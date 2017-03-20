@@ -60,10 +60,12 @@ const handler = (payload, res) => {
             //compose and send response 
               let attachments = [
               {
+                 image_url: restaurant_picked.image
+              },
+              {
                   fallback: "Today\'s lunch spot is " + restaurant_picked.restaurant_name + ".",           
                   title: 'today\'s lunch spot is...',
                   color: '#2FA44F',
-                  image_url: restaurant_picked.image,
                   text: restaurant_picked.restaurant_name + '   (도보거리 약 ' + Math.round(restaurant_picked.distance.min/60)+ ' 분)',
                   mrkdwn_in: ['text']
               }
