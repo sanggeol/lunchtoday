@@ -185,7 +185,7 @@ const handler = (payload, res) => {
 
             var field_attach = 
             {
-               color: "#7CD197"
+               color: "#7CD197",
                fields: fields
             }
             attachments.push(field_attach)
