@@ -47,15 +47,44 @@ exports.Get_distance = function(restaurant_info,resultcallback){
         console.log("error: " + err)
         totaltime = -1
       }else{
-        console.log(body)
          var routes = JSON.parse(body)
          totaltime = routes.features[0].properties.totalTime
       }
     resultcallback(err,totaltime)
 
-});
-
+    })
 }
+var params = {
+  center: '444 W Main St Lock Haven PA',
+  zoom: 15,
+  size: '500x400',
+  maptype: 'roadmap',
+  markers: [
+    {
+      location: '300 W Main St Lock Haven, PA',
+      label   : 'A',
+      color   : 'green',
+      shadow  : true
+    }
+  ],
+  style: [
+    {
+      feature: 'road',
+      element: 'all',
+      rules: {
+        hue: '0x00ff00'
+      }
+    }
+  ]
+}
+exports.Test_StaticMap = function(mapcallback){
+  
+  var testurl = gmAPI.staticMap(params) // return static map URL 
+  gmAPI.staticMap(params, function(err, binaryImage) {
+  // fetch asynchronously the binary image 
+  })
+}
+
 
 
 exports.test = function(resultcallback){

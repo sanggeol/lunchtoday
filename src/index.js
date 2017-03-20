@@ -62,6 +62,9 @@ app.post('/commands/starbot', (req, res) => {
   }
   console.log(hours + ": Seoul")
 
+  navigation.Test_StaticMap(function(resultcallback){
+
+  })
   
   //todo check
   //today history
