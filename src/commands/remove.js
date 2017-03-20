@@ -25,6 +25,13 @@ const handler = (payload, res) => {
 
   var restaurant_name = blocks[1]
   
+  for (var i = 1; i < blocks.length; i++) {
+    restaurant_name += blocks[i]
+    if(i != blocks.length - 1 ){
+      restaurant_name += " "
+    }
+  }
+
   console.log("restaurant name is " + restaurant_name)
   
   if(blocks[0]=="remove" && blocks.length > 1 ){    
