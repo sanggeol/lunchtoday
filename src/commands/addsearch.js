@@ -99,7 +99,7 @@ const handler = (payload, res) => {
                 var maker = 
                 {
                   location: search_item.latitude +","+ search_item.longitude,
-                  label   : nextChar(A,i),
+                  label   : nextChar('A',i),
                   color   : 'green',
                   shadow  : true
                 }
