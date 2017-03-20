@@ -78,9 +78,11 @@ var params = {
   ]
 }
 exports.Test_StaticMap = function(mapcallback){
-  
+  console.log("Test_StaticMap execute")
   var testurl = gmAPI.staticMap(params) // return static map URL 
+  console.log(testurl)
   gmAPI.staticMap(params, function(err, binaryImage) {
+    mapcallback(err,binaryImage)
   // fetch asynchronously the binary image 
   })
 }

@@ -62,8 +62,8 @@ app.post('/commands/starbot', (req, res) => {
   }
   console.log(hours + ": Seoul")
 
-  navigation.Test_StaticMap(function(resultcallback){
-
+  navigation.Test_StaticMap(function(err,map){
+      console.log("static map " + err)
   })
   
   //todo check
