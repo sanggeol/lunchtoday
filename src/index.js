@@ -74,7 +74,7 @@ app.post('/commands/starbot', (req, res) => {
   let cmd = _.reduce(commands, (a, cmd) => {
             return payload.text.match(cmd.pattern) ? cmd : a
             }, defaultCommand)
-  console.log('payload = ' + payload)
+  console.log('payload = ' + payload.text)
   cmd.handler(payload, res)
  })
 
