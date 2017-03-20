@@ -84,7 +84,7 @@ const handler = (payload, res) => {
             res.set('content-type', 'application/json')
             res.status(200).json(msg)
           }else{   
-            var attach_cnt = 5
+            var attach_cnt = 4
             
             if(total_count < attach_cnt ){
                 attach_cnt = total_count
