@@ -131,7 +131,7 @@ const handler = (payload, res) => {
             let fields = []
           
             let actions = []
-            //add filed or actions
+            //add field or actions
             for (var i = 0; i < attach_cnt; i++)
             {
               var search_item = search_results.channel.item[i]
@@ -169,9 +169,15 @@ const handler = (payload, res) => {
               title: restaurant_name + " 검색결과.",
               color: '#2FA44F',
               image_url: staticmap_url,
-              fields: fields
+              
             }
             attachments.push(main_attach)
+
+            var field_attach = 
+            {
+               fields: fields
+            }
+            attachments.push(field_attach)
 
             var action_attach = 
             {
