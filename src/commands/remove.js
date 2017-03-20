@@ -41,6 +41,7 @@ const handler = (payload, res) => {
         
        let attachments = [
         {
+          fallback: restaurant_name + result_msg ,    
           title: 'Lunch Today!',
           color: '#2FA44F',
           text: restaurant_name + result_msg ,
