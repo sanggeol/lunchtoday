@@ -10,7 +10,8 @@ const commands = require('./commands')
 
 const navigation = require('./navigation')
 
-const defaultCommand = require('./commands/pick')
+const defaultCommand = require('./commands/help')
+const pickCommand = require('./commands/pick')
 
 const addCommand = require('./commands/add')
 
@@ -74,7 +75,9 @@ app.post('/commands/starbot', (req, res) => {
   let cmd = _.reduce(commands, (a, cmd) => {
             return payload.text.match(cmd.pattern) ? cmd : a
             }, defaultCommand)
-  console.log('payload = ' + payload.text)
+  if(payload.text==""){
+    cmd = pickCommand
+  }
   cmd.handler(payload, res)
  })
 
