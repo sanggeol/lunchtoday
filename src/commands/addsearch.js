@@ -120,7 +120,7 @@ const handler = (payload, res) => {
             //center == kctech 
             var map_param = {
              center: '37.509815,127.064187',
-             zoom: 16,
+             zoom: 14,
              size: '640x480',
              maptype: 'roadmap',
              markers: markers,
