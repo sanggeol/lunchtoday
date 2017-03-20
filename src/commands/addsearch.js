@@ -192,7 +192,7 @@ const handler = (payload, res) => {
 
             var action_attach = 
             {
-                author_name:'식당을 선택해주세요.' ,
+                title:'식당을 선택해주세요.' ,
                 fallback: 'rihgt?',
                 callback_id: 'select',
                 color: "#3AA3E3",
