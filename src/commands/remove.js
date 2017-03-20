@@ -23,15 +23,18 @@ const handler = (payload, res) => {
   var text = payload.text
   var blocks = text.split(" ")
 
-  var restaurant_name = text.replace("remove ","")
+  var restaurant_name = blocks[1]//text.replace("remove ","")
 
   console.log("restaurant name is " + restaurant_name)
   
 
   if(blocks[0]=="remove" && blocks.length > 1 ){    
 
-    Restaurants.remove({restaurant_name: restaurant_name},
-      function(err, removed) {
+    Restaurants.remove({restaurant_name: 
+                          {
+                            "$regex": restaurant_name,
+                            "$options": "i"
+                          }},function(err, removed) {
       
         var result_msg = " 이 목록에서 제거되었습니다."
         
