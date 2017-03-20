@@ -94,6 +94,16 @@ const handler = (payload, res) => {
             //create google static maps
             var markers = []
 
+            var marker = 
+              {
+                  location: originY +","+ originX,
+                  label   : 'S',
+                  color   : 'blue',
+                  shadow  : true
+            }
+            
+            markers.push(marker)
+
             for (var i = 0; i < attach_cnt; i++)
             {
                 var search_item = search_results.channel.item[i]
