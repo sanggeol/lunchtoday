@@ -94,7 +94,8 @@ const handler = (payload, res) => {
 
             for (var i = 0; i < attach_cnt; i++)
             {
-              search_item.latitude + "_" + search_item.longitude
+                var search_item = search_results.channel.item[i]
+                
                 var maker = 
                 {
                   location: search_item.latitude +","+ search_item.longitude,
