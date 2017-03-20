@@ -30,7 +30,7 @@ const handler = (payload, res) => {
 
   if(blocks[0]=="remove" && blocks.length > 1 ){    
 
-    Restaurants.find({restaurant_name : { search : restaurant_name }}).remove(
+    Restaurants.remove({restaurant_name : { search : restaurant_name }},
       function(err, removed) {
       
         var result_msg = " 이 목록에서 제거되었습니다."
