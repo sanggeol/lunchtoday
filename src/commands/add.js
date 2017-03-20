@@ -8,6 +8,14 @@ const _ = require('lodash')
 const config = require('../config')
 const trending = require('github-trending')
 
+
+const cancelmsgDefaults = {
+  response_type: 'ephemeral',
+  username: 'lunchtoday',
+  replace_original: true,
+  icon_emoji: config('ICON_EMOJI')
+}
+
 const msgDefaults = {
   response_type: 'in_channel',
   username: 'lunchtoday',
@@ -27,12 +35,32 @@ const handler = (payload,res_info,res) => {
   //restaurant_info is array [0] = name [1] = latitude [2] = longitude
   var restaurant_info = res_info.split("_")
 
-    console.log(restaurant_info)
+    
+    if(res_info == "Cancel"){
+    	let attachments = [
+			  	{
+			    title: 'Lunch Today!',
+			    color: '#2FA44F',
+			    text: "취소하셨습니다.",
+			    mrkdwn_in: ['text']
+			  	}]
+			  
+		let msg = _.defaults({
+			channel: payload.channel_name,
+			attachments: attachments
+			}, msgDefaults)
+			  
+		res.set('content-type', 'application/json')
+		res.status(200).json(msg)	
+
+		return
+    }
 
     var restaurant_name = restaurant_info[0]
 
     console.log("ready to create restaurant" + restaurant_name)
 
+    
 	Restaurants.find({restaurant_name: restaurant_name}).exec(function(err, found) {	  
 	      if(err){
 		 	 console.log(err)

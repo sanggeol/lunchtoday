@@ -105,7 +105,6 @@ const handler = (payload, res) => {
                 }
                 markers.push(marker)
             }        
-            console.log(markers)
             //center == kctech 
             var map_param = {
              center: '37.509815,127.064187',
@@ -153,14 +152,14 @@ const handler = (payload, res) => {
               actions.push(action)
             }            
 
-            var cancle_action =
+            var cancel_action =
             {
-                name: "cancle",
-                text: "cancle",
+                name: "Cancel",
+                text: "Cancel",
                 type: "button",
                 value: "no"
             }
-            actions.push(cancle_action)
+            actions.push(cancel_action)
          
             var main_attach = 
             {

@@ -37,7 +37,7 @@ app.post('/commands/action', (req, res) => {
     var tmp = JSON.parse(req.body.payload) // parse URL-encoded payload JSON string
    
     addCommand.handler(payload,tmp.actions[0].name,res)
-
+    
 })
 
 app.post('/commands/starbot', (req, res) => {
