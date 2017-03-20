@@ -29,7 +29,7 @@ const handler = (payload, res) => {
   
   if(blocks[0]=="remove" && blocks.length > 1 ){    
 
-    Restaurants.find({restaurant_name: /restaurant_name/i }).remove().exec(
+    Restaurants.findOne({restaurant_name: /.*restaurant_name.*/i }).remove(
       function(err, removed) {
         
       
