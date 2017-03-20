@@ -123,9 +123,7 @@ const handler = (payload,res_info,res) => {
 
 var create_restaurant = function(user_name, user_id, team_name, team_id, restaurant_info, cb){
 
-	var re = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\(\=]/gi;
-	//replace 에서 사용합니다.
-	var restaurant_name  = restaurant_info[0].replace(re, "");
+	var restaurant_name  = restaurant_info[0];
 
     var latitude = restaurant_info[1]
 
@@ -168,6 +166,14 @@ var create_restaurant = function(user_name, user_id, team_name, team_id, restaur
 
 
 }
+
+ String.prototype.htmlChars = function() { 
+
+        var str = ((this.replace('"', '&amp;')).replace('"', '&quot;')).replace('\'', '&#39;'); 
+
+        return (str.replace('<', '&lt;')).replace('>', '&gt;'); 
+
+ } 
 
 module.exports = { pattern: /create/ig, handler: handler }
 
