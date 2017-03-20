@@ -120,8 +120,8 @@ const handler = (payload, res) => {
             //center == kctech 
             var map_param = {
              center: '37.509815,127.064187',
-             zoom: 15,
-             size: '500x400',
+             zoom: 16,
+             size: '640x480',
              maptype: 'roadmap',
              markers: markers,
              style: [
@@ -185,6 +185,7 @@ const handler = (payload, res) => {
 
             var field_attach = 
             {
+               color: "#7CD197"
                fields: fields
             }
             attachments.push(field_attach)
