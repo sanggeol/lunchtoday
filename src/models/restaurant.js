@@ -29,6 +29,7 @@ var restaurantSchema = new mongoose.Schema({
       registered: {type: Boolean, default: false},
       min: {type: Number, default: -1}
     },
+    image:{type: String, default: ''},
     status: {type: String, default: 'listed'}
   },
   { timestamps: true }
