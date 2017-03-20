@@ -171,7 +171,7 @@ const handler = (payload, res) => {
               mrkdwn_in: ['text'],
               attachment_type: "default"
             }
-            attachments.push(main_attch)
+            attachments.push(main_attach)
 
             var action_attach = 
             {
