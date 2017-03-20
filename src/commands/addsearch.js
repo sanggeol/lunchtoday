@@ -9,6 +9,19 @@ var request = require('request');
 var Restaurants      = require('../models/restaurant')
 
 
+//about google maps
+var GoogleMapsAPI = require('googlemaps')
+
+var publicConfig = {
+  key: 'AIzaSyBJ23W-OJvknLM6s-TC29G6TBZENjIVgGY',
+  encode_polylines:   false,
+  secure:             true, // use https 
+  proxy:              '' // optional, set a proxy for HTTP requests 
+};
+
+var gmAPI = new GoogleMapsAPI(publicConfig);
+
+
 const msgDefaults = {
   response_type: 'ephemeral',
   username: 'lunchtoday',
@@ -71,12 +84,52 @@ const handler = (payload, res) => {
             res.set('content-type', 'application/json')
             res.status(200).json(msg)
           }else{   
-            var attach_cnt = 3
+            var attach_cnt = 5
             
-            if(total_count < 3){
+            if(total_count < 5){
                 attach_cnt = total_count
             }
+            //create google static maps
+            var markers = []
 
+            for (var i = 0; i < attach_cnt; i++)
+            {
+              search_item.latitude + "_" + search_item.longitude
+                var maker = 
+                {
+                  location: search_item.latitude +","+ search_item.longitude,
+                  label   : nextChar(A,i),
+                  color   : 'green',
+                  shadow  : true
+                }
+                // if(i != attach_cnt - 1){
+                //   maker += ","
+                // }
+                markers.push(maker)
+            }        
+            console.log(makers)
+            //center == kctech 
+            var map_param = {
+             center: '37.509815,127.064187',
+             zoom: 15,
+             size: '500x400',
+             maptype: 'roadmap',
+             markers: markers,
+             style: [
+             {
+               feature: 'road',
+               element: 'all',
+               rules: {
+               hue: '0x00ff00'
+               }
+             }
+             ]
+            }
+
+            var staticmap_url = gmAPI.staticMap(params) // return static map URL 
+            console.log(staticmap_url)
+
+            //ok
             let attachments = []
 
             for (var i = 0; i < attach_cnt; i++)
@@ -143,6 +196,10 @@ const handler = (payload, res) => {
 
 
   return
+}
+
+function nextChar(c,i) {
+    return String.fromCharCode(c.charCodeAt(0) + i);
 }
 
 module.exports = { pattern: /add/ig, handler: handler }
