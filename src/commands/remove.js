@@ -23,20 +23,14 @@ const handler = (payload, res) => {
   var text = payload.text
   var blocks = text.split(" ")
 
-  var restaurant_name
-  
-  for (var i = 1; i < blocks.length; i++) {
-    restaurant_name += blocks[i]
-    if(i != blocks.length - 1 ){
-      restaurant_name += " "
-    }
-  }
+  var restaurant_name = blocks[1]
 
   console.log("restaurant name is " + restaurant_name)
   
+
   if(blocks[0]=="remove" && blocks.length > 1 ){    
 
-    Restaurants.remove({restaurant_name: restaurant_name},
+    Restaurants.find({restaurant_name : { search : restaurant_name }}).remove(
       function(err, removed) {
       
         var result_msg = " 이 목록에서 제거되었습니다."
