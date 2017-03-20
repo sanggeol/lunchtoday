@@ -86,7 +86,7 @@ const handler = (payload, res) => {
           }else{   
             var attach_cnt = 5
             
-            if(total_count < 5){
+            if(total_count < attach_cnt ){
                 attach_cnt = total_count
             }
             //create google static maps
@@ -103,9 +103,6 @@ const handler = (payload, res) => {
                   color   : 'green',
                   shadow  : true
                 }
-                // if(i != attach_cnt - 1){
-                //   marker += ","
-                // }
                 markers.push(marker)
             }        
             console.log(markers)
@@ -128,55 +125,75 @@ const handler = (payload, res) => {
             }
 
             var staticmap_url = gmAPI.staticMap(map_param) // return static map URL 
-            console.log(staticmap_url)
-
-            //ok
             let attachments = []
 
+            let fileds = []
+            
+            let actions = []
+            //add filed or actions
             for (var i = 0; i < attach_cnt; i++)
             {
               var search_item = search_results.channel.item[i]
-
-              var result_msg = 
+              
+              var filed =  
               {
-                title: search_item.title, 
-                title_link: search_item.placeUrl,  
-                color: '#2FA44F',
-                image_url: search_item.imageUrl,
-                text: search_item.newAddress + "\n"+"거리: " + search_item.distance + "m\n" + "여기인가요?",
-                mrkdwn_in: ['text'],
+                title: nextChar('A',i),
+                value: search_item.title + "(" + search_item.distance+" m)",
+                short: true
+              }
+              fileds.push(filed)
+              
+              var action = 
+              {
+                name: search_item.title+ "_" + search_item.latitude + "_" + search_item.longitude,
+                text: nextChar('A',i),
+                type: "button",
+                value: "right"
+              }
+              actions.push(action)
+            }            
+
+            var cancle_action =
+            {
+                name: "cancle",
+                text: "cancle",
+                type: "button",
+                value: "no"
+            }
+            actions.push(cancle_action)
+         
+            var main_attach = 
+            {
+              title: restaurant_name + "검색결과.",
+              color: '#2FA44F',
+              image_url: staticmap_url,
+              fileds: fileds
+              mrkdwn_in: ['text'],
+              attachment_type: "default"
+            }
+            attachments.push(main_attch)
+
+            var action_attach = 
+            {
                 fallback: "rihgt?",
-                callback_id: "ask_" + i,
+                callback_id: "select",
                 color: "#3AA3E3",
                 attachment_type: "default",
-                actions: [
-                {
-                    name: search_item.title+ "_" + search_item.latitude + "_" + search_item.longitude,
-                    text: "Yes",
-                    type: "button",
-                    value: "right"
-                },
-                {
-                    name: "no",
-                    text: "No",
-                    type: "button",
-                    value: "isnot"
-                }
-                ]
+                actions: actions
             }
-            attachments.push(result_msg)
-          }
+            attachments.push(action_attach)
+           
               
-         let msg = _.defaults({
-            channel: payload.channel_name,
-            attachments: attachments
-            }, msgDefaults) 
-          res.set('content-type', 'application/json')
-          res.status(200).json(msg)         
-
-          }  
-        }
-      })
+            let msg = _.defaults({
+              channel: payload.channel_name,
+              attachments: attachments
+              }, msgDefaults)   
+            
+            res.set('content-type', 'application/json')
+            res.status(200).json(msg)         
+            }  
+          }
+        })
   }else{
     let attachments = [
           {
