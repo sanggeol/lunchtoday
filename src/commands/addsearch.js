@@ -167,7 +167,7 @@ const handler = (payload, res) => {
               title: restaurant_name + "검색결과.",
               color: '#2FA44F',
               image_url: staticmap_url,
-              fileds: fileds
+              fileds: fileds,
               mrkdwn_in: ['text'],
               attachment_type: "default"
             }
