@@ -41,6 +41,8 @@ const handler = (payload, res) => {
   
   var restaurant_name = blocks[1]
   
+  restaurant_name.trim()
+
   if(restaurant_name.length > 0){
     var encoded_restaurants_name = encodeURIComponent(restaurant_name); 
     var originName = "KCTech"
