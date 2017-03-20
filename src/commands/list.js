@@ -14,7 +14,7 @@ const msgDefaults = {
 
 const handler = (payload, res) => {
     console.log('list handler initiated')
-    Restaurants.find({}).sort({'distance.min': 'asc'}).select('restaurant_name distance -_id').exec(function(err, result) {
+    Restaurants.find({}).sort({'distance.seconds': 'asc'}).select('restaurant_name distance -_id').exec(function(err, result) {
       if (!err) {
           console.log(result.length + ' restaurants found in the list')
           var rest_list = ''
@@ -22,8 +22,8 @@ const handler = (payload, res) => {
 //             rest_list += JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n'     
             if(result[i].distance.registered){
 //               console.log(result[i])
-//               console.log(result[i].distance.min/60 + '분')
-              rest_list += result[i].restaurant_name + '   ' + Math.round(result[i].distance.min/60) + '분\n'
+//               console.log(result[i].distance.seconds/60 + '분')
+              rest_list += result[i].restaurant_name + '   ' + Math.round(result[i].distance.seconds/60) + '분\n'
             }else{
               rest_list += result[i].restaurant_name + '\n'
             }
