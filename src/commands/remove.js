@@ -23,7 +23,7 @@ const handler = (payload, res) => {
   var text = payload.text
   var blocks = text.split(" ")
 
-  var restaurant_name = blocks[1]
+  var restaurant_name
   
   for (var i = 1; i < blocks.length; i++) {
     restaurant_name += blocks[i]
