@@ -125,7 +125,7 @@ var create_restaurant = function(user_name, user_id, team_name, team_id, restaur
 
 	var restaurant_name  = restaurant_info[0]
 
-	restaurant_name.replace("&amp"," ")
+	restaurant_name.replace(/&amp;/g, ' ');
 
     var latitude = restaurant_info[1]
 
