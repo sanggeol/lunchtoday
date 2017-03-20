@@ -55,18 +55,10 @@ exports.Get_distance = function(restaurant_info,resultcallback){
     })
 }
 var params = {
-  center: '444 W Main St Lock Haven PA',
+  center: '37.509815,127.064187',
   zoom: 15,
   size: '500x400',
   maptype: 'roadmap',
-  markers: [
-    {
-      location: '300 W Main St Lock Haven, PA',
-      label   : 'A',
-      color   : 'green',
-      shadow  : true
-    }
-  ],
   style: [
     {
       feature: 'road',
