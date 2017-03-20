@@ -14,19 +14,19 @@ const msgDefaults = {
 
 const handler = (payload, res) => {
     console.log('list handler initiated')
-    Restaurants.find({}).select('restaurant_name -_id').exec(function(err, result) {
+    Restaurants.find({}).select('restaurant_name distance -_id').exec(function(err, result) {
       if (!err) {
           console.log(result.length + ' restaurants found in the list')
           var rest_list = ''
           for(var i = 0; i < result.length; i++) {
 //             rest_list += JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n'     
-//             if(result[i].distance.registered){
-              console.log(result[i])
-              console.log(result[i].distance.min/60 + '분')
+            if(result[i].distance.registered){
+//               console.log(result[i])
+//               console.log(result[i].distance.min/60 + '분')
               rest_list += result[i].restaurant_name + '   ' + Math.round(result[i].distance.min/60) + '분\n'
-//             }else{
-//               rest_list += result[i].restaurant_name + '\n'
-//             }
+            }else{
+              rest_list += result[i].restaurant_name + '\n'
+            }
           }
           rest_list += '### total '+ result.length + ' restaurants listed ###'
 //           let attachments = [
