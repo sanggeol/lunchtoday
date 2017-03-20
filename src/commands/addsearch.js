@@ -128,8 +128,10 @@ const handler = (payload, res) => {
             var staticmap_url = gmAPI.staticMap(map_param) // return static map URL 
             let attachments = []
 
-            let fileds = []
+            let fileds_up = []
             
+            let fileds_down = []
+
             let actions = []
             //add filed or actions
             for (var i = 0; i < attach_cnt; i++)
@@ -142,7 +144,12 @@ const handler = (payload, res) => {
                 value: search_item.title + "(" + search_item.distance+" m)",
                 short: true
               }
-              fileds.push(filed)
+
+              if(i < 2){
+                fileds_up.push(filed)
+              }else{
+                fileds_down.push(filed)
+              }
               
               var action = 
               {
@@ -165,7 +172,7 @@ const handler = (payload, res) => {
          
             var main_attach = 
             {
-              title: restaurant_name + "검색결과.",
+              title: restaurant_name + " 검색결과.",
               color: '#2FA44F',
               image_url: staticmap_url,
               fileds: fileds
