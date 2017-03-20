@@ -14,7 +14,7 @@ const msgDefaults = {
 
 const handler = (payload, res) => {
     console.log('list handler initiated')
-    Restaurants.find({}).select('restaurant_name distance -_id').exec(function(err, result) {
+    Restaurants.find({}).sort({distance.min: 'asc'}).select('restaurant_name distance -_id').exec(function(err, result) {
       if (!err) {
           console.log(result.length + ' restaurants found in the list')
           var rest_list = ''
