@@ -63,7 +63,7 @@ const handler = (payload, res) => {
                   fallback: "Today\'s lunch spot is " + restaurant_picked.restaurant_name + ".",           
                   title: 'today\'s lunch spot is...',
                   color: '#2FA44F',
-                  text: restaurant_picked.restaurant_name,
+                  text: restaurant_picked.restaurant_name + '   거리 약 ' + Math.round(restaurant_picked.distance.min/60)+ ' 분',
                   mrkdwn_in: ['text']
               }
               ]
