@@ -23,19 +23,18 @@ const handler = (payload, res) => {
   var text = payload.text
   var blocks = text.split(" ")
 
-  var restaurant_name = blocks[1]
-  
+  var restaurant_name = text.replace("remove","")
+
   console.log("restaurant name is " + restaurant_name)
   
   if(blocks[0]=="remove" && blocks.length > 1 ){    
 
-    Restaurants.find({restaurant_name: /.*restaurant_name.*/i }).remove(
+    Restaurants.remove({restaurant_name: restaurant_name},
       function(err, removed) {
-        
       
         var result_msg = " 이 목록에서 제거되었습니다."
         
-        if(removed.length == 0){
+        if(removed.result.n == 0){
           result_msg = "은(는) 목록에 존재하지 않습니다."
         }
         
