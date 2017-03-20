@@ -123,7 +123,9 @@ const handler = (payload,res_info,res) => {
 
 var create_restaurant = function(user_name, user_id, team_name, team_id, restaurant_info, cb){
 
-	 var restaurant_name = restaurant_info[0]
+	var re = /[ \{\}\[\]\/?.,;:|\)*~`!^\-_+┼<>@\#$%&\'\"\\(\=]/gi;
+	//replace 에서 사용합니다.
+	var restaurant_name  = restaurant_info[0.replace(re, "");
 
     var latitude = restaurant_info[1]
 
