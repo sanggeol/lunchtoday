@@ -20,8 +20,8 @@ const handler = (payload, res) => {
           var rest_list = ''
           for(var i = 0; i < result.length; i++) {
 //             rest_list += JSON.stringify(result[i].restaurant_name, undefined, 2) + '\n'     
-            if(result[i].distance.registered == true){
-              rest_list += result[i].restaurant_name + '   ' + result[i].distance.min + '분\n'
+            if(result[i].distance.registered){
+              rest_list += result[i].restaurant_name + '   ' + Math.round(result[i].distance.min/60) + '분\n'
             }else{
               rest_list += result[i].restaurant_name + '\n'
             }
