@@ -31,10 +31,13 @@ const handler = (payload, res) => {
 
     Restaurants.find({restaurant_name: { regex: restaurant_name, options: 'i'} }).remove(
       function(err, removed) {
-      
+        
+        console.log(err)
+        console.log(removed)
+
         var result_msg = " 이 목록에서 제거되었습니다."
         
-        if(removed.result.n == 0){
+        if(err){
           result_msg = "은(는) 목록에 존재하지 않습니다."
         }
         
