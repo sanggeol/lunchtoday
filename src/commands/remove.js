@@ -29,12 +29,10 @@ const handler = (payload, res) => {
   
   if(blocks[0]=="remove" && blocks.length > 1 ){    
 
-    Restaurants.find({restaurant_name: /restaurant_name/i }).remove(
+    Restaurants.find({restaurant_name: /restaurant_name/i }).remove().exec(
       function(err, removed) {
         
-        console.log(err)
-        console.log(removed)
-
+      
         var result_msg = " 이 목록에서 제거되었습니다."
         
         if(err){
