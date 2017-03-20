@@ -25,6 +25,7 @@ const handler = (payload, res) => {
 
   var restaurant_name = text.replace("remove ","")
 
+  console.log("restaurant name is " + restaurant_name)
   
 
   if(blocks[0]=="remove" && blocks.length > 1 ){    

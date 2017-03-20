@@ -157,7 +157,7 @@ const handler = (payload, res) => {
               
               var action = 
               {
-                name: search_item.title+ "_" + search_item.latitude + "_" + search_item.longitude,
+                name: search_item.title+ "_" + search_item.latitude + "_" + search_item.longitude + "_" + search_item.imageUrl,
                 text: nextChar('A',i),
                 type: "button",
                 value: "right"

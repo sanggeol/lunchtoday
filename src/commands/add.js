@@ -129,6 +129,8 @@ var create_restaurant = function(user_name, user_id, team_name, team_id, restaur
 
     var longitude = restaurant_info[2]
 
+    var imageurl = restaurant_info[3]
+
     navigation.Get_distance(restaurant_info,function(err, totaltime){
     
     	var minutes = Math.floor(totaltime / 60);
@@ -141,6 +143,7 @@ var create_restaurant = function(user_name, user_id, team_name, team_id, restaur
                	  team_name: team_name,
           	 	  team_id: team_id,
              	  restaurant_name: restaurant_name,
+             	  image: imageurl,
              	  location: {
              	  	registered: true,
              	  	longitude: longitude,
