@@ -27,7 +27,7 @@ var restaurantSchema = new mongoose.Schema({
     },
     distance: {
       registered: {type: Boolean, default: false},
-      min: {type: Number, default: -1}
+      seconds: {type: Number, default: -1}
     },
     image:{type: String, default: ''},
     status: {type: String, default: 'listed'}
@@ -35,19 +35,20 @@ var restaurantSchema = new mongoose.Schema({
   { timestamps: true }
 );
 
-restaurantSchema.statics.updateWeight = function updateWeight(cb){
+restaurantSchema.statics.updateWeight = function updateWeight(cb){  
   console.log('updateWeight called')
+  var C2 = 0.1
   this.model("Restaurants").find({}).exec(function(err, result){
     if (err) console.log(err)
-//     for(var i=0; i<result.length; i++){
-//       result[i].update({weight: 0},{}, function(err, cb2){
-//         if (err) console.log(err)
-//       })
-//     }
-    result[0].update({weight: 4},{}, cb)
+    var newWeight = 0
+    for(var i=0; i<result.length; i++){
+      newWeight = (300 - result[i].distance.seconds) / 60
+      result[i].update({weight: newWeight},{}, function(err, cb2){
+        if (err) console.log(err)
+      })
+    }
 
   })
-  console.log('weights updated')
 //   this.model("Restaurants").findOneAndUpdate(query, {weight: 1}, {new: true}, function(err, cb){
 //     if (err) console.log(err);
 //     console.log("succesfully updated");
