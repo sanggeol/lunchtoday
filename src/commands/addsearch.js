@@ -96,7 +96,7 @@ const handler = (payload, res) => {
             {
                 var search_item = search_results.channel.item[i]
                 
-                var maker = 
+                var marker = 
                 {
                   location: search_item.latitude +","+ search_item.longitude,
                   label   : nextChar('A',i),
@@ -104,11 +104,11 @@ const handler = (payload, res) => {
                   shadow  : true
                 }
                 // if(i != attach_cnt - 1){
-                //   maker += ","
+                //   marker += ","
                 // }
-                markers.push(maker)
+                markers.push(marker)
             }        
-            console.log(makers)
+            console.log(markers)
             //center == kctech 
             var map_param = {
              center: '37.509815,127.064187',
