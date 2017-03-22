@@ -26,10 +26,10 @@ const handler = (payload, res) => {
             //calculate probability for each restaurant
               var softmax_probability_unnormalized = []
               var sum_of_softmax = 0
-              var C1 = 0.1
+              var C1 = 0.2
               for(var i=0; i<result.length; i++){
                 var temp = Math.exp(C1 * result[i].weight)
-                console.log("i = " + i + ", weight = " + result[i].weight + ", C1*weight = " + C1*result[i].weight + ", exp(C1*weight) = " + temp)            
+                console.log("i = " + i + ", weight = " + result[i].weight + ", exp(C1*weight) = " + temp)            
                 softmax_probability_unnormalized.push(temp);
                 sum_of_softmax += temp;
               }
